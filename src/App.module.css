@@ -1,0 +1,8 @@
+.app {
+  align-items: center;
+  background-image: url("./assets/images/background.png");
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
