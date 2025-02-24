@@ -1,21 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import styles from "./App.module.css";
+import { Routes, Route } from "react-router-dom";
+import Signup from "./pages/signup/signup";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
-  )
+    <div className={styles.app}>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
