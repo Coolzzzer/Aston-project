@@ -1,0 +1,17 @@
+.sideBar {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.button {
+    background-color: #ADFF2F;
+    height: 54px;
+}
+
+/* .button__registration {
+    width: auto;
+} */

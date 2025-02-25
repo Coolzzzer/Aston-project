@@ -1,0 +1,9 @@
+.head {
+    display: flex;
+    flex-direction: row;
+    width: 1440px;
+    height: 122px;
+    background-color: #4F4F4F;
+    padding: 25px 51px;
+    box-sizing: border-box;
+}
