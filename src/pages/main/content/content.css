@@ -1,0 +1,60 @@
+.main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1440px;
+    min-height: 810px;
+    background-image: url('../../../assets/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+.main__movie-finder {
+    min-width: 827px;
+}
+
+.main__title {
+    font-size: 80px;
+    line-height: 120px;
+    color: #ADFF2F;
+}
+
+.main__information {
+    font-size: 36px;
+    line-height: 54px;
+    color: #FFFFFF;
+}
+
+.main__signature {
+    text-align: left;
+    font-size: 18px;
+    line-height: 27px;
+    color: #BDBDBD;
+}
+
+.main__form {
+    display: flex;
+    flex-direction: row;
+}
+
+.main__search-field {
+    flex-grow: 1;
+    border-radius: 10px 0 0 10px;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+    padding-left: 33px;
+}
+
+.main__submit {
+    border-radius: 0 10px 10px 0;
+    background-color: #ADFF2F;
+    color: #000000;
+    font-size: 24px;
+    line-height: 36px;
+}
