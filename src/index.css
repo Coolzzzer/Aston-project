@@ -1,4 +1,13 @@
 :root {
+  --header-footer-bg-color: #4F4F4F;
+  --header-footer-height: 120px;
+  --header-footer-width: 100vw;
+  --header-footer-flex-direction: row;
+  --header-footer-display: flex;
+
+  --button-bg-color: #ADFF2F;
+  --button-color: #000000;
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -25,7 +34,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }

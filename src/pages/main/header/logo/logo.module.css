@@ -1,0 +1,18 @@
+.logo {
+    margin: 0;
+    padding: 0;
+    max-width: 288px;
+    height: 72px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ADFF2F;
+    letter-spacing: 0%;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 72px;
+}
+
+.logo:hover {
+    cursor: pointer;
+    color: #ADFF2F;
+}
