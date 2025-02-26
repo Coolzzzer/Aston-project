@@ -1,7 +1,9 @@
 :root {
   --header-footer-bg-color: #4F4F4F;
   --header-footer-height: 120px;
-  --header-footer-width: 100vw;
+  --header-footer-width: 100vh;
+  --header-footer-min-width: 1200px;
+  --header-footer-max-width: 1800px;
   --header-footer-flex-direction: row;
   --header-footer-display: flex;
 
