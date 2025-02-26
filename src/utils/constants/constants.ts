@@ -7,4 +7,7 @@ export const initialUser: User = {
 };
 
 // Routes
-export const SIGNUP = "/signup";
+export const URLs = {
+  HOME_PAGE: '/',
+  SIGN_UP: `/signup`
+} as const;

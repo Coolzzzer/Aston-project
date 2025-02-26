@@ -1,4 +1,4 @@
-import {URLs} from "../../../../constants/urls";
+import {URLs} from "../../../utils/constants/constants";
 import sideBarStyle from "./sideBar.module.css";
 import { Link } from 'react-router-dom';
 
