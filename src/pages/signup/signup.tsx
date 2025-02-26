@@ -7,6 +7,7 @@ import signupStyles from "./signup.module.css";
 import { User } from "../../utils/types/types";
 import { userSchema } from "../../utils/validation/validation";
 import { initialUser } from "../../utils/constants/constants";
+import { URLs } from "../../utils/constants/constants";
 
 export default function Signup() {
   const [formData, setFormData] = useState<User>(initialUser);
@@ -35,7 +36,7 @@ export default function Signup() {
 
     dispatch(registerUser(formData));
 
-    navigate("/");
+    navigate(URLs.HOME_PAGE);
   };
 
   return (
