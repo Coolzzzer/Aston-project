@@ -1,0 +1,14 @@
+.sideBar {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.button {
+    height: 54px;
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
+}
