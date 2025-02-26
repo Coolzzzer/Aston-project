@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../store/authSlice";
 import signupStyles from "./signup.module.css";
 import { User } from "../../utils/types/types";
 import { userSchema } from "../../utils/validation/validation";
@@ -8,6 +11,9 @@ import { initialUser } from "../../utils/constants/constants";
 export default function Signup() {
   const [formData, setFormData] = useState<User>(initialUser);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,8 +33,9 @@ export default function Signup() {
       return;
     }
 
-    setErrors({});
-    console.log("Форма отправлена", formData);
+    dispatch(registerUser(formData));
+
+    navigate("/");
   };
 
   return (
