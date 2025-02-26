@@ -50,8 +50,8 @@
 
 .main__submit {
     border-radius: 0 10px 10px 0;
-    background-color: #ADFF2F;
-    color: #000000;
     font-size: 24px;
     line-height: 36px;
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
 }

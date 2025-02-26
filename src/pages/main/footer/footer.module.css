@@ -1,9 +1,4 @@
 .footer {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 122px;
-    background-color: #4F4F4F;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
@@ -12,4 +7,9 @@
     font-size: 24px;
     line-height: 36px;
     color: #F2F2F2;
+    display: var(--header-footer-display);
+    flex-direction: var(--header-footer-flex-direction);
+    width: var(--header-footer-width);
+    height: var(--header-footer-height);
+    background-color: var(--header-footer-bg-color);
 }

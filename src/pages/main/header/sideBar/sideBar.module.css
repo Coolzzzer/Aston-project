@@ -8,6 +8,7 @@
 }
 
 .button {
-    background-color: #ADFF2F;
     height: 54px;
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
 }

@@ -1,9 +1,9 @@
 .head {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 122px;
-    background-color: #4F4F4F;
     padding: 25px 51px;
     box-sizing: border-box;
+    display: var(--header-footer-display);
+    flex-direction: var(--header-footer-flex-direction);
+    width: var(--header-footer-width);
+    height: var(--header-footer-height);
+    background-color: var(--header-footer-bg-color);
 }
