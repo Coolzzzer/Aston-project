@@ -1,3 +1,4 @@
+import URLs from "../src/constants/urls";
 import styles from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
 import Signup from "./pages/signup/signup";
@@ -10,8 +11,8 @@ function App() {
     <div className={styles.app}>
       <Header />
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Content />} />
+        <Route path={URLs.SIGN_UP} element={<Signup />} />
+        <Route path={URLs.HOME_PAGE} element={<Content />} />
       </Routes>
       <Footer />
     </div>
