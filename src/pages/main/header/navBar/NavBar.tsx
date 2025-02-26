@@ -1,4 +1,4 @@
-import URLs from "../../../../constants/urls";
+import {URLs} from "../../../../constants/urls";
 import navbarStyle from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 
