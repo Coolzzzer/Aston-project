@@ -10,6 +10,8 @@
     display: var(--header-footer-display);
     flex-direction: var(--header-footer-flex-direction);
     width: var(--header-footer-width);
+    max-width: var(--header-footer-max-width);
+    min-width: var(--header-footer-min-width);
     height: var(--header-footer-height);
     background-color: var(--header-footer-bg-color);
 }
