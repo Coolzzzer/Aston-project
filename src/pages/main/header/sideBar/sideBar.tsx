@@ -8,12 +8,12 @@ export default function SideBar() {
   return (
     <nav className={sideBarStyle.sideBar}>
         <Link to={URLs.HOME_PAGE}> 
-            <button className={`${sideBarStyle.button} ${(pathname == `/` + URLs.SIGN_IN) ? sideBarStyle.buttonNone:""}`}>
+            <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_IN) ? sideBarStyle.buttonNone:""}`}>
               Вход
             </button>
         </Link>
         <Link to={URLs.SIGN_UP}> 
-            <button className={`${sideBarStyle.button} ${(pathname == `/` + URLs.SIGN_UP) ? sideBarStyle.buttonNone:""}`}>
+            <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_UP) ? sideBarStyle.buttonNone:""}`}>
               Регистрация
             </button>
         </Link>
