@@ -1,0 +1,68 @@
+.inputField {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.title{
+	color: rgba(173, 255, 47, 1);
+	font-family: Poppins;
+	font-weight: 400;
+	font-size: 80px;
+	line-height: 120px;
+	letter-spacing: 0%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: -20px;
+}
+.slogan{
+	color: rgba(255, 255, 255, 1);
+	font-family: Poppins;
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 54px;
+	letter-spacing: 0%;
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: center;
+}
+.searchInput{
+	width: 608px;
+	height: 23px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	color: rgba(0, 0, 0, 1);
+	font-family: Poppins;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 36px;
+	letter-spacing: 0%;
+	padding: 30px;
+	border: none;
+}
+.searchButton{
+	background-color:rgba(173, 255, 47, 1);
+	width: 159px;
+	height: 83px;
+	top: 559px;
+	left: 974px;
+	border-radius: 0;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: rgba(0, 0, 0, 1);
+	font-family:'Poppins', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 36px;
+	letter-spacing: 0%;
+}
+.example{
+	margin-top: 40px;
+	color: rgba(189, 189, 189, 1);
+	font-family: Poppins;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 27px;
+	letter-spacing: 0%;
+}

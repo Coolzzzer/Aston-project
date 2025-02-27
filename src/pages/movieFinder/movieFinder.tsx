@@ -1,21 +1,37 @@
-import movieFinderStyle from "./movieFInder.module.css";
+import React, { useState } from 'react';
+import InputField from './components/inputField/inputField';
+import ResultField from './components/resultField/resultField';
+import './components/inputField/inputFiels.css';  
+import './components/resultField/resultField.css';
 
-export default function MovieFinder() {
-    return (
-        <div className={movieFinderStyle.movieFinder}>
-            <h1 className={movieFinderStyle.title}>
-                Movie Finder
-            </h1>
-            <p className={movieFinderStyle.information}>
-                Cari film favoritmu berdasarkan judulnya...
-            </p>
-            <form className={movieFinderStyle.form} action="#" method="GET">
-                <input className={movieFinderStyle.searchField} type="search" name="search" placeholder="Search movie..." />
-                <button className={movieFinderStyle.submit} type="submit">Search</button>
-            </form>
-            <p className={movieFinderStyle.signature}>
-                contoh: Batman, Avengers, Home Alone
-            </p>
-        </div>
-    );
-};
+const MovieFinder: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [movies, setMovies] = useState<any[]>([]);
+
+  const fetchMovies = async (query: string) => {
+    try {
+      const response = await fetch(`https://www.omdbapi.com/?apikey=3e3e7f8f&s=${query}`);
+      const data = await response.json();
+      if (data.Search) {
+        setMovies(data.Search);
+      } else {
+        setMovies([]);
+      }
+    } catch (error) {
+      console.error('Ошибка при загрузке данных:', error);
+    }
+  };
+
+  const handleSearch = () => {
+    fetchMovies(searchTerm);
+  };
+
+  return (
+    <div>
+      <InputField searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
+      <ResultField movies={movies} />
+    </div>
+  );
+}
+
+export default MovieFinder;
