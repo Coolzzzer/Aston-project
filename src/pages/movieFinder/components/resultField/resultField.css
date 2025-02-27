@@ -7,6 +7,8 @@
 	background-color: white;
 	justify-content: center;
 	margin: auto;
+	flex-grow: 1;
+  gap: 20px;
 }
 .card{
 	margin: 93px;
@@ -59,4 +61,39 @@
 	background-color: rgba(173, 255, 47, 1);
 	margin-top: 20px;
 	margin-left: 30px;
+}
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  justify-content: space-between;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+	background-color: white;
+}
+
+.pagination button {
+	width: 54.75229263305664px;
+	height: 54.75229263305664px;
+	border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+	background-color: #CCCCCC;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  
+	background-color: rgba(173, 255, 47, 1);
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #CCCCCC;
 }

@@ -1,24 +1,4 @@
-// const ResultField: React.FC = () => {
-//   let array: object[] = [{}, {}, {}, {}];
-// 	const url :string = "http://www.omdbapi.com/?apikey=3e3e7f8f&s="
-//   return (
-// 		<>
-// 			<div className="resultField">
-// 				{array.map((_, index) => (
-// 					<div className="card" key={index}>
-// 						<img className="cardImg" src=""/>
-// 						<div className="cardTitle">Batman Begins</div>
-// 						<div className="yearCreation">2005</div>
-// 						<button className="details">Detail</button>
-// 					</div>
-// 				))}
-// 			</div>
-// 		</>
-//   )
-// }
-
-// export default ResultField;
-import React from 'react';
+import React, { useState } from 'react';
 import './resultField.css';
 
 interface ResultFieldProps {
