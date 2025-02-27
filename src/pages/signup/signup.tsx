@@ -2,12 +2,12 @@ import { useState } from "react";
 import { TextField, Button, Container, Typography, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../store/authSlice";
+import { registerUser } from "@store/authSlice";
 import signupStyles from "./signup.module.css";
-import { User } from "../../utils/types/types";
-import { userSchema } from "../../utils/validation/validation";
-import { initialUser } from "../../utils/constants/constants";
-import { URLs } from "../../utils/constants/constants";
+import { User } from "@utils/types/types";
+import { userSchema } from "@utils/validation/validation";
+import { initialUser } from "@utils/constants/constants";
+import { URLs } from "@utils/constants/constants";
 
 export default function Signup() {
   const [formData, setFormData] = useState<User>(initialUser);

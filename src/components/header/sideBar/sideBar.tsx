@@ -1,4 +1,4 @@
-import {URLs} from "../../../utils/constants/constants";
+import {URLs} from "@utils/constants/constants";
 import sideBarStyle from "./sideBar.module.css";
 import { Link, useLocation } from 'react-router-dom';
 
