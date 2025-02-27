@@ -18,6 +18,7 @@ const InputField: React.FC<InputFieldProps> = ({ searchTerm, setSearchTerm, hand
           className="searchInput"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+					placeholder='Search movie...'
         />
         <button className="searchButton" onClick={handleSearch}>Search</button>
         <div className="example">contoh: Batman, Avengers, Home Alone</div>
