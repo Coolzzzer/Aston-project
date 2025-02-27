@@ -1,19 +1,20 @@
-import signupStyles from "./signup.module.css";
 import { useState } from "react";
 import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "@store/authSlice";
+import signupStyles from "./signup.module.css";
+import { User } from "@utils/types/types";
+import { userSchema } from "@utils/validation/validation";
+import { initialUser } from "@utils/constants/constants";
+import { URLs } from "@utils/constants/constants";
 
 export default function Signup() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState<User>(initialUser);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,24 +23,20 @@ export default function Signup() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newErrors = { name: "", email: "", password: "" };
+    const result = userSchema.safeParse(formData);
 
-    if (formData.name.trim().length < 2) {
-      newErrors.name = "Имя должно быть не меньше двух символов";
-    }
-    if (!formData.email.includes("@")) {
-      newErrors.email = "Введите правильный email";
-    }
-    if (formData.password.length < 6) {
-      newErrors.password = "Пароль должен быть не меньше шести символов";
-    }
-
-    if (newErrors.name || newErrors.email || newErrors.password) {
+    if (!result.success) {
+      const newErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path) newErrors[err.path[0]] = err.message;
+      });
       setErrors(newErrors);
       return;
     }
 
-    console.log("Form submitted", formData);
+    dispatch(registerUser(formData));
+
+    navigate(URLs.HOME_PAGE);
   };
 
   return (

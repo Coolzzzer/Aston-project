@@ -1,4 +1,4 @@
-import {URLs} from "../../../../constants/urls";
+import {URLs} from "@utils/constants/constants";
 import logoStyle from"./logo.module.css";
 import { Link } from 'react-router-dom';
 
