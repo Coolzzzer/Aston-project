@@ -12,3 +12,9 @@ export const URLs = {
   SIGN_UP: `/signup`,
   SIGN_IN: `/signin`
 } as const;
+
+
+//keys
+export const STORAGE_KEYS = {
+  USER: "user",
+};
