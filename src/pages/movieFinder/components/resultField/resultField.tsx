@@ -1,47 +1,32 @@
-import React, { useState } from 'react';
+import {Card}from '../card/card';
+import usePagination from '../../hooks/usePagination';
 import './resultField.css';
 
-interface ResultFieldProps {
+type ResultFieldProps = {
   movies: any[];
 }
 
-const ResultField: React.FC<ResultFieldProps> = ({ movies }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const moviesPerPage = 6;
-  const indexOfLastMovie = currentPage * moviesPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
-  const nextPage = () => {
-    if (currentPage < Math.ceil(movies.length / moviesPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+export const ResultField: React.FC<ResultFieldProps> = ({ movies }) => {
+  const { currentMovies, currentPage, nextPage, prevPage } = usePagination(movies);
 
   return (
     <div className="resultContainer">
       <div className="resultField">
-        {currentMovies.map((movie) => (
-          <div className="card" key={movie.imdbID}>
-            <img className="cardImg" src={movie.Poster} alt={movie.Title} />
-            <div className="cardTitle">{movie.Title}</div>
-            <div className="yearCreation">{movie.Year}</div>
-            <button className="details">Detail</button>
-          </div>
-        ))}
+        <Card currentMovies={currentMovies} />
       </div>
-      {movies.length > moviesPerPage && (
+      {movies.length > 6 && (
         <div className="pagination">
-          <button onClick={prevPage} disabled={currentPage === 1}>&#60;</button>
-          <button onClick={nextPage} disabled={currentPage === Math.ceil(movies.length / moviesPerPage)}>&#62;</button>
+          <button onClick={prevPage} disabled={currentPage === 1}>
+            &#60;
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === Math.ceil(movies.length / 6)}
+          >
+            &#62;
+          </button>
         </div>
       )}
     </div>
   );
-}
-
-export default ResultField;
+};
