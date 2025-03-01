@@ -15,3 +15,11 @@ export const setLocalStorageItem = <T>(key: string, value: T): void => {
     console.error(`Ошибка инициализации localStorage ключа "${key}":`, error);
   }
 };
+
+export const removeLocalStorageItem = (key: string): void => {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.error(`Ошибка удаления localStorage ключа "${key}":`, error);
+  }
+};

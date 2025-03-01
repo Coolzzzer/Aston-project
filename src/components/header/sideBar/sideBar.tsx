@@ -7,7 +7,7 @@ export default function SideBar() {
 
   return (
     <nav className={sideBarStyle.sideBar}>
-        <Link to={URLs.HOME_PAGE}> 
+        <Link to={URLs.SIGN_IN}> 
             <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_IN) ? sideBarStyle.buttonNone:""}`}>
               Вход
             </button>
