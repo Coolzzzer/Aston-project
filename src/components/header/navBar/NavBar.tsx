@@ -6,10 +6,10 @@ export default function NavBar() {
     return (
         <nav className={navbarStyle.menu}>
             <NavLink to={URLs.SIGN_UP} className={ ({isActive}) => `${navbarStyle.menu__link} ${isActive ? navbarStyle.menu__linkActive : ""}`}>
-                Регистрация
+                История
             </NavLink>
             <NavLink to={URLs.HOME_PAGE} className={ ({isActive}) => `${navbarStyle.menu__link} ${isActive ? navbarStyle.menu__linkActive : ""}` }>
-                Главная
+                Избранное
             </NavLink>
         </nav>
     );

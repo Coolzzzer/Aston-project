@@ -1,22 +1,34 @@
 import {URLs} from "@utils/constants/constants";
 import sideBarStyle from "./sideBar.module.css";
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { MyContext } from "@components/MyContext";
+import { useContext } from "react";
 
 export default function SideBar() {
   const {pathname} = useLocation();
+  const navigate = useNavigate();
+  const {loggedIn, setLoggedIn} = useContext(MyContext);
+
+  const handleLogin = () => {
+      if(loggedIn) {
+          setLoggedIn(false);
+      } else {
+          setLoggedIn(true);
+      }
+  }
+
+  const handleNavigateToSignUp = () => {
+      navigate("/signup");
+  }
 
   return (
     <nav className={sideBarStyle.sideBar}>
-        <Link to={URLs.HOME_PAGE}> 
-            <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_IN) ? sideBarStyle.buttonNone:""}`}>
-              Вход
-            </button>
-        </Link>
-        <Link to={URLs.SIGN_UP}> 
-            <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_UP) ? sideBarStyle.buttonNone:""}`}>
-              Регистрация
-            </button>
-        </Link>
+        <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_IN) ? sideBarStyle.buttonNone:""}`} onClick={handleLogin}>
+          Авторизоваться
+        </button>
+        <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_UP) ? sideBarStyle.buttonNone:""}`} onClick={handleNavigateToSignUp}>
+          Регистрация
+        </button>
     </nav>
   );  
 };
