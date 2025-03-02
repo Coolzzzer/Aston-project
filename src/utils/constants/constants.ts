@@ -10,7 +10,9 @@ export const initialUser: User = {
 export const URLs = {
   HOME_PAGE: '/',
   SIGN_UP: `/signup`,
-  SIGN_IN: `/signin`
+  SIGN_IN: `/signin`,
+  HISTORY: `/history`,
+  FAVORITES: `/favorites`
 } as const;
 
 

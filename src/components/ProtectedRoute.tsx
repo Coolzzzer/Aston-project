@@ -8,7 +8,7 @@ interface Props {
 
 const ProtectedRouterElement: FC<Props> = ({elements: Component, ...props}) => {
     return (
-        props.loggedIn ? <Component /> : <Navigate to="/" replace />
+        props.loggedIn ? <Component /> : <Navigate to="/"  />
     );
 }
 

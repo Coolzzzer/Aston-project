@@ -6,11 +6,7 @@ export default function UserProfile() {
     const {loggedIn, setLoggedIn} = useContext(MyContext);
 
     const handleLogin = () => {
-        if(loggedIn) {
-            setLoggedIn(false);
-        } else {
-            setLoggedIn(true);
-        }
+        setLoggedIn(!loggedIn);
     }
 
     return (
