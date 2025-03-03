@@ -3,12 +3,11 @@ import usePagination from '../../hooks/usePagination';
 import './resultField.css';
 
 type ResultFieldProps = {
-  movies: any[];
+  movies: object[];
 }
 
 export const ResultField: React.FC<ResultFieldProps> = ({ movies }) => {
   const { currentMovies, currentPage, nextPage, prevPage } = usePagination(movies);
-
   return (
     <div className="resultContainer">
       <div className="resultField">

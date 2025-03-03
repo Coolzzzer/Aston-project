@@ -3,10 +3,11 @@ import './inputFiels.css';
 
 type InputFieldProps = {
   searchTerm: string;
-  handleSearch: (event: React.ChangeEvent<HTMLInputElement> | null) => void;
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearch: () => void;
 };
 
-export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleSearch }) => {
+export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleInputChange, handleSearch }) => {
   return (
     <div className="inputField">
       <div className="content">
@@ -16,10 +17,10 @@ export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleSearch
         <input
           className="searchInput"
           value={searchTerm}
-          onChange={(e) => handleSearch(e)} // Передаем событие в handleSearch
+          onChange={handleInputChange} 
           placeholder="Search movie..."
         />
-        <button className="searchButton" onClick={() => handleSearch(null)}>
+        <button className="searchButton" onClick={handleSearch}>
           Search
         </button>
         <div className="example">contoh: Batman, Avengers, Home Alone</div>

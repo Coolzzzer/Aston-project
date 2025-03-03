@@ -18,7 +18,6 @@ const usePagination = (movies: any[], moviesPerPage: number = 6) => {
       setCurrentPage(currentPage - 1);
     }
   };
-
   return { currentMovies, currentPage, nextPage, prevPage };
 };
 

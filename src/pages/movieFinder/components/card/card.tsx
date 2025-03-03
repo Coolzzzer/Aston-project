@@ -1,12 +1,19 @@
 import React from 'react';
 import './card.css';
 
+type Movie = {
+  imdbID: string;
+  Poster: string;
+  Title: string;
+  Year: string;
+}
+
 type CardProps = {
-  currentMovies: any[];
+  currentMovies: Movie[];
 }
 
 export const Card: React.FC<CardProps> = ({ currentMovies }) => {
-  return (
+	return (
     <>
       {currentMovies.map((movie) => (
         <div className="card" key={movie.imdbID}>

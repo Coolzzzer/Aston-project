@@ -8,7 +8,6 @@ import './movieFinder.css'
 export const MovieFinder: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [movies, setMovies] = useState<any[]>([]);
-
   const fetchMovies = async (query: string) => {
     try {
       const response = await fetch(`https://www.omdbapi.com/?apikey=3e3e7f8f&s=${query}`);
@@ -23,18 +22,21 @@ export const MovieFinder: React.FC = () => {
     }
   };
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement> | null) => {
-    if (event) {
-      setSearchTerm(event.target.value); // Обновляем поле ввода
-    } else {
-      fetchMovies(searchTerm); // Выполняем поиск, если событие отсутствует (нажатие кнопки)
-    }
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearch = () => {
+    fetchMovies(searchTerm);
   };
 
   return (
     <div>
-      <InputField searchTerm={searchTerm} handleSearch={handleSearch} />
-      <ResultField movies={movies} />
+      <InputField
+				searchTerm={searchTerm}
+        handleInputChange={handleInputChange}
+        handleSearch={handleSearch}/>
+      <ResultField movies={movies}/>
     </div>
   );
 };
