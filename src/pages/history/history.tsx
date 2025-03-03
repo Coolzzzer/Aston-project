@@ -10,7 +10,7 @@ function History() {
           options={collection.map((item) => {
             return { id: item.Title, label: item.Title };
           })}
-          sx={{ width: 300 }}
+          sx={{ width: 400 }}
           renderInput={(params) => (
             <TextField {...params} label="Поиск фильмов" />
           )}
