@@ -1,39 +1,43 @@
 import React from "react";
-import { Card, CardContent, Typography, Grid2 } from "@mui/material";
-import { collection, Movie } from "./collectionMovies";
-
-const MovieCard: React.FC<{ movie: Movie }> = ({ movie }) => {
-  return (
-    <Card style={{ maxWidth: 345, margin: "16px", height: "100%" }}>
-      <img
-        src={movie.Poster}
-        alt={movie.Title}
-        style={{ width: "100%", objectFit: "cover", height: "520px" }}
-      />
-      <CardContent>
-        <Typography variant="h5" component="div">
-          {movie.Title}
-        </Typography>
-        <Typography color="text.secondary">
-          {movie.Year} - {movie.Rated}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {movie.Plot}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid2,
+  Container,
+  Stack,
+} from "@mui/material";
+import { collection } from "./collectionMovies";
+import MovieCard from "@components/movieCard/movieCard";
+import favoritesStyle from "@pages/favorites/favorites.module.css";
 
 const MovieList: React.FC = () => {
   return (
-    <Grid2 container spacing={2} justifyContent="center">
-      {collection.map((movie, index) => (
-        <Grid2 key={index}>
-          <MovieCard movie={movie} />
-        </Grid2>
-      ))}
-    </Grid2>
+    <Stack className={favoritesStyle.favoritesStack}>
+      <Typography variant="h2" component="div">
+        Избранное
+      </Typography>
+      <Container className={favoritesStyle.favoritesContainer} maxWidth="xl">
+        <Card
+          style={{
+            maxHeight: "80vh",
+            overflow: "auto",
+            borderRadius: "20px",
+            backgroundColor: "var(--header-footer-bg-color)", // здесь не получается пока вынести стиль в favorites.module.css, так как он кроме параметра max-height не отображает остальные, ищу как это исправить
+          }}
+        >
+          <CardContent>
+            <Grid2 className={favoritesStyle.grid2} container spacing={2}>
+              {collection.map((movie, index) => (
+                <Grid2 key={index}>
+                  <MovieCard movie={movie} />
+                </Grid2>
+              ))}
+            </Grid2>
+          </CardContent>
+        </Card>
+      </Container>
+    </Stack>
   );
 };
 
