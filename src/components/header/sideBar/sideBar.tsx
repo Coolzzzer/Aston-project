@@ -2,7 +2,7 @@ import {URLs} from "@utils/constants/constants";
 import sideBarStyle from "./sideBar.module.css";
 import { useLocation, useNavigate} from 'react-router-dom';
 
-export default function SideBar() {
+export function SideBar() {
   const {pathname} = useLocation();
   const navigate = useNavigate();
 

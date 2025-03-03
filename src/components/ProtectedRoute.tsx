@@ -6,10 +6,8 @@ interface Props {
     elements: React.ComponentType;
 }
 
-const ProtectedRouterElement: FC<Props> = ({elements: Component, ...props}) => {
+export const ProtectedRouterElement: FC<Props> = ({elements: Component, ...props}) => {
     return (
         props.loggedIn ? <Component /> : <Navigate to="/"  />
     );
-}
-
-export default ProtectedRouterElement;
+};

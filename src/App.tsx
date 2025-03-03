@@ -8,7 +8,7 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Content from "./pages/main/content/content";
 import { MyContext } from "@components/MyContext";
-import ProtectedRouterElement from "@components/ProtectedRoute";
+import {ProtectedRouterElement} from "@components/ProtectedRoute";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
