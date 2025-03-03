@@ -9,7 +9,7 @@ import { userSchema } from "@utils/validation/validation";
 import { initialUser } from "@utils/constants/constants";
 import { URLs } from "@utils/constants/constants";
 
-export default function Signup() {
+export function Signup() {
   const [formData, setFormData] = useState<User>(initialUser);
   const [errors, setErrors] = useState<Record<string, string>>({});
 

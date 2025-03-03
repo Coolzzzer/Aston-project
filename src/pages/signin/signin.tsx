@@ -9,7 +9,7 @@ import { userSchema } from "@utils/validation/validation";
 import { initialUser } from "@utils/constants/constants";
 import { URLs } from "@utils/constants/constants";
 
-export default function Signin() {
+export function Signin() {
   const [formData, setFormData] = useState<Omit<User, "name">>({
     email: initialUser.email,
     password: initialUser.password,
