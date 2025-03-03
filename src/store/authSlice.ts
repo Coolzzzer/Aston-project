@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User, AuthState } from "@utils/types/types";
 import { STORAGE_KEYS } from "@utils/constants/constants";
-import { getLocalStorageItem, setLocalStorageItem } from "@utils/storage/localStorage";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+  removeLocalStorageItem,
+} from "@utils/storage/localStorage";
 
 const initialState: AuthState = {
   user: getLocalStorageItem<User>(STORAGE_KEYS.USER),
@@ -15,8 +19,25 @@ const authSlice = createSlice({
       state.user = action.payload;
       setLocalStorageItem(STORAGE_KEYS.USER, action.payload);
     },
+    loginUser: (state, action: PayloadAction<User>) => {
+      const storedUser = getLocalStorageItem<User>(STORAGE_KEYS.USER);
+
+      if (
+        storedUser &&
+        storedUser.email === action.payload.email &&
+        storedUser.password === action.payload.password
+      ) {
+        state.user = storedUser;
+      } else {
+        throw new Error("Неверный email или пароль");
+      }
+    },
+    logoutUser: (state) => {
+      state.user = undefined;
+      removeLocalStorageItem(STORAGE_KEYS.USER);
+    },
   },
 });
 
-export const { registerUser } = authSlice.actions;
+export const { registerUser, loginUser, logoutUser } = authSlice.actions;
 export default authSlice.reducer;

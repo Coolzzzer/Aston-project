@@ -2,15 +2,18 @@ import { useState } from "react";
 import { TextField, Button, Container, Typography, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "@store/authSlice";
-import signupStyles from "./signup.module.css";
+import { loginUser } from "@store/authSlice";
+import signinStyles from "./signin.module.css";
 import { User } from "@utils/types/types";
 import { userSchema } from "@utils/validation/validation";
 import { initialUser } from "@utils/constants/constants";
 import { URLs } from "@utils/constants/constants";
 
-export function Signup() {
-  const [formData, setFormData] = useState<User>(initialUser);
+export function Signin() {
+  const [formData, setFormData] = useState<Omit<User, "name">>({
+    email: initialUser.email,
+    password: initialUser.password,
+  });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const dispatch = useDispatch();
@@ -23,7 +26,9 @@ export function Signup() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = userSchema.safeParse(formData);
+    const result = userSchema
+      .pick({ email: true, password: true })
+      .safeParse(formData);
 
     if (!result.success) {
       const newErrors: Record<string, string> = {};
@@ -34,33 +39,25 @@ export function Signup() {
       return;
     }
 
-    dispatch(registerUser(formData));
-
-    navigate(URLs.HOME_PAGE);
+    try {
+      dispatch(loginUser(formData as User));
+      navigate(URLs.HOME_PAGE);
+    } catch {
+      setErrors({ general: "Неверный email или пароль" });
+    }
   };
 
   return (
-    <section className={signupStyles.section}>
+    <section className={signinStyles.section}>
       <Container maxWidth="xs">
         <Box
           sx={{ p: 5, boxShadow: 6, borderRadius: 5 }}
-          className={signupStyles.box}
+          className={signinStyles.box}
         >
           <Typography variant="h4" gutterBottom>
-            Регистрация
+            Авторизация
           </Typography>
-          <form onSubmit={handleSubmit} className={signupStyles.form}>
-            <TextField
-              sx={{ input: { color: "white" } }}
-              label="Имя"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              error={!!errors.name}
-              helperText={errors.name}
-              fullWidth
-              margin="normal"
-            />
+          <form onSubmit={handleSubmit} className={signinStyles.form}>
             <TextField
               sx={{ input: { color: "white" } }}
               label="Email"
@@ -84,13 +81,18 @@ export function Signup() {
               fullWidth
               margin="normal"
             />
+            {errors.general && (
+              <Typography color="error" variant="body2">
+                {errors.general}
+              </Typography>
+            )}
             <Button
               variant="contained"
               color="secondary"
               type="submit"
               fullWidth
             >
-              Зарегистрироваться
+              Войти
             </Button>
           </form>
         </Box>

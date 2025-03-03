@@ -2,7 +2,8 @@ import { useState} from "react";
 import {URLs} from "./utils/constants/constants";
 import styles from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
-import Signup from "./pages/signup/signup";
+import {Signin} from "@pages/signin/signin";
+import {Signup} from "./pages/signup/signup";
 import MovieFinder from "./pages/movieFinder/movieFinder";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -22,6 +23,7 @@ function App() {
         <Route path={URLs.HOME_PAGE} element={<Content />}>
           <Route path={``} element={<MovieFinder />} />
           <Route path={URLs.SIGN_UP} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signup}/>} />
+          <Route path={URLs.SIGN_IN} element={<Signin />} />
         </Route>
       </Routes>
       <Footer />
