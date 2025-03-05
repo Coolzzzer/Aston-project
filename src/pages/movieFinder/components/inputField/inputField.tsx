@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './inputFiels.css';
-
 type InputFieldProps = {
   searchTerm: string;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSearch: () => void;
+	children: ReactNode;
 };
 
-export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleInputChange, handleSearch }) => {
+export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleInputChange, handleSearch, children }) => {
   return (
     <div className="inputField">
       <div className="content">
@@ -23,6 +23,7 @@ export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleInputC
         <button className="searchButton" onClick={handleSearch}>
           Search
         </button>
+				{children}
         <div className="example">contoh: Batman, Avengers, Home Alone</div>
       </div>
     </div>
