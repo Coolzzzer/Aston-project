@@ -13,7 +13,6 @@ export function Signin() {
   const [formData, setFormData] = useState<Omit<User, "name">>({
     email: initialUser.email,
     password: initialUser.password,
-    loggedIn: initialUser.loggedIn,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 

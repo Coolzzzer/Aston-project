@@ -9,9 +9,11 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Content from "./pages/main/content/content";
 import {ProtectedRouterElement} from "@components/ProtectedRoute";
+import { RootState } from "@store/store"; 
+
 
 function App() {
-  const loggedIn = useSelector((state:boolean) => state.auth.loggedIn);
+  const loggedIn = useSelector((state: RootState) => state.auth.loggedIn);
 
 
   return (
