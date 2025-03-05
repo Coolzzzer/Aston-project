@@ -11,7 +11,7 @@ export const ResultField: React.FC<ResultFieldProps> = ({ movies }) => {
   return (
     <div className="resultContainer">
       <div className="resultField">
-        <Card currentMovies={currentMovies} />
+        <Card currentMovies={currentMovies}/>
       </div>
       {movies.length > 6 && (
         <div className="pagination">

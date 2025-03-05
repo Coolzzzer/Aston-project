@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import {InputField }from './components/inputField/inputField';
-import {ResultField} from './components/resultField/resultField';
+import { InputField } from './components/inputField/inputField';
+import { ResultField } from './components/resultField/resultField';
+import { Filter } from './components/filter/filter';
 import './components/inputField/inputFiels.css';
 import './components/resultField/resultField.css';
-import './movieFinder.css'
+import './movieFinder.css';
 
 export const MovieFinder: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [filterTerm, setFilterTerm] = useState<number | null>(null);
   const [movies, setMovies] = useState<any[]>([]);
-  const fetchMovies = async (query: string) => {
+
+  const fetchMovies = async (searchQuery: string, filterQuery: number | null) => {
     try {
-      const response = await fetch(`https://www.omdbapi.com/?apikey=3e3e7f8f&s=${query}`);
+      const url = filterQuery
+        ? `https://www.omdbapi.com/?apikey=3e3e7f8f&s=${searchQuery}&y=${filterQuery}`
+        : `https://www.omdbapi.com/?apikey=3e3e7f8f&s=${searchQuery}`;
+      const response = await fetch(url);
       const data = await response.json();
       if (data.Search) {
         setMovies(data.Search);
@@ -22,21 +28,32 @@ export const MovieFinder: React.FC = () => {
     }
   };
 
-	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
+  const handleInputFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value ? parseInt(event.target.value, 10) : null;
+    setFilterTerm(value);
+  };
+
   const handleSearch = () => {
-    fetchMovies(searchTerm);
+    fetchMovies(searchTerm, filterTerm);
   };
 
   return (
     <div>
       <InputField
-				searchTerm={searchTerm}
+        searchTerm={searchTerm}
         handleInputChange={handleInputChange}
-        handleSearch={handleSearch}/>
-      <ResultField movies={movies}/>
+        handleSearch={handleSearch}
+				children={<Filter
+					filterTerm={filterTerm}
+					handleInputFilterChange={handleInputFilterChange}
+				/>}
+      ></InputField>
+
+      <ResultField movies={movies} />
     </div>
   );
 };
