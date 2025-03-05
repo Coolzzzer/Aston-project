@@ -1,17 +1,16 @@
 import userProfileStyle from "./userProfile.module.css";
-import { MyContext } from "@components/MyContext";
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "@store/authSlice";
 
 export default function UserProfile() {
-    const {loggedIn, setLoggedIn} = useContext(MyContext);
-
-    const handleLogin = () => {
-        setLoggedIn(!loggedIn);
+    const dispatch = useDispatch();
+    
+    const handleLogOut = () => {
+        dispatch(logoutUser());
     }
-
     return (
         <div className={userProfileStyle.userProfile}>
-            <button className={userProfileStyle.buttonLeave} onClick={handleLogin}>
+            <button className={userProfileStyle.buttonLeave} onClick={handleLogOut}>
                 Выйти
             </button>
             <div className={userProfileStyle.userData}>

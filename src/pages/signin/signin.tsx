@@ -13,6 +13,7 @@ export function Signin() {
   const [formData, setFormData] = useState<Omit<User, "name">>({
     email: initialUser.email,
     password: initialUser.password,
+    loggedIn: initialUser.loggedIn,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -27,7 +28,7 @@ export function Signin() {
     e.preventDefault();
 
     const result = userSchema
-      .pick({ email: true, password: true })
+      .pick({ email: true, password: true})
       .safeParse(formData);
 
     if (!result.success) {

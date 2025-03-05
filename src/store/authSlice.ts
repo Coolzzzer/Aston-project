@@ -9,6 +9,7 @@ import {
 
 const initialState: AuthState = {
   user: getLocalStorageItem<User>(STORAGE_KEYS.USER),
+  loggedIn: false,
 };
 
 const authSlice = createSlice({
@@ -28,13 +29,17 @@ const authSlice = createSlice({
         storedUser.password === action.payload.password
       ) {
         state.user = storedUser;
+        state.loggedIn = true;
+        setLocalStorageItem("loggedIn", state.loggedIn);
+        setLocalStorageItem(STORAGE_KEYS.USER, state.user);
       } else {
         throw new Error("Неверный email или пароль");
       }
     },
     logoutUser: (state) => {
-      state.user = undefined;
-      removeLocalStorageItem(STORAGE_KEYS.USER);
+      state.loggedIn = false;
+      setLocalStorageItem("loggedIn", state.loggedIn);
+      // removeLocalStorageItem(STORAGE_KEYS.USER);
     },
   },
 });
