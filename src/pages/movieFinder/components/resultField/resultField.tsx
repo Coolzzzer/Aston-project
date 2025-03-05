@@ -1,5 +1,5 @@
 import {Card}from '../card/card';
-import usePagination from '../../hooks/usePagination';
+import {usePagination} from '@utils/hooks/usePagination';
 import './resultField.css';
 
 type ResultFieldProps = {

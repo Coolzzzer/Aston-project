@@ -14,6 +14,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "types": ["vitest"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

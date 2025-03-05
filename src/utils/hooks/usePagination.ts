@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const usePagination = (movies: any[], moviesPerPage: number = 6) => {
+export const usePagination = (movies: any[], moviesPerPage: number = 6) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
@@ -21,4 +21,6 @@ const usePagination = (movies: any[], moviesPerPage: number = 6) => {
   return { currentMovies, currentPage, nextPage, prevPage };
 };
 
-export default usePagination;
+
+
+

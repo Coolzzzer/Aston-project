@@ -13,17 +13,17 @@ export const InputField: React.FC<InputFieldProps> = ({ searchTerm, handleInputC
       <div className="content">
         <div className="title">Movie Finder</div>
         <br />
-        <div className="slogan">Cari film favoritmu berdasarkan judulnya...</div>
+        <div className="slogan">Поиск фильмов</div>
         <input
           className="searchInput"
           value={searchTerm}
           onChange={handleInputChange} 
-          placeholder="Search movie..."
+          placeholder="Найти фильм..."
         />
         <button className="searchButton" onClick={handleSearch}>
-          Search
+          Поиск
         </button>
-        <div className="example">contoh: Batman, Avengers, Home Alone</div>
+        <div className="example">Пример: Batman, Avengers, Home Alone</div>
       </div>
     </div>
   );
