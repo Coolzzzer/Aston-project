@@ -1,12 +1,14 @@
 import userProfileStyle from "./userProfile.module.css";
-import { useDispatch } from "react-redux";
+import { RootState } from "@store/store"; 
+import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "@store/authSlice";
 
 export default function UserProfile() {
     const dispatch = useDispatch();
+    const auth = useSelector((state: RootState) => state.auth.user);
     
     const handleLogOut = () => {
-        dispatch(logoutUser());
+        dispatch(logoutUser()); 
     }
     return (
         <div className={userProfileStyle.userProfile}>
@@ -14,8 +16,8 @@ export default function UserProfile() {
                 Выйти
             </button>
             <div className={userProfileStyle.userData}>
-                <span>Александр</span>
-                <span>email@mail.com</span>
+                <span>{auth?.name}</span>
+                <span>{auth?.email}</span>
             </div>
             <div className={userProfileStyle.userPhoto}></div>
         </div>
