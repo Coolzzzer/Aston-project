@@ -6,4 +6,5 @@ export type User = {
 
 export type AuthState = {
   user?: User;
+  loggedIn: boolean;
 };

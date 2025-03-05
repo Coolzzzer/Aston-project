@@ -36,7 +36,7 @@ export function Signup() {
 
     dispatch(registerUser(formData));
 
-    navigate(URLs.HOME_PAGE);
+    navigate(URLs.SIGN_IN);
   };
 
   return (

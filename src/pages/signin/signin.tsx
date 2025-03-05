@@ -27,7 +27,7 @@ export function Signin() {
     e.preventDefault();
 
     const result = userSchema
-      .pick({ email: true, password: true })
+      .pick({ email: true, password: true})
       .safeParse(formData);
 
     if (!result.success) {
