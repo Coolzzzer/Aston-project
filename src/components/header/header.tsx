@@ -4,10 +4,10 @@ import NavBar from "./navBar/NavBar";
 import { SideBar } from "./sideBar/sideBar";
 import UserProfile from "./userProfile/userProfile";
 import { useSelector } from "react-redux";
-import { RootState } from "@store/store"; 
+import { getLoggedIn } from "@store/getLoggedIn";
 
 export default function Header() {
-    const loggedIn = useSelector((state: RootState) => state.auth.loggedIn);
+    const loggedIn = useSelector(getLoggedIn);
 
     return (
         <header className={headerStyle.head}>

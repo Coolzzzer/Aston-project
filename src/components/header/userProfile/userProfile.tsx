@@ -1,11 +1,11 @@
 import userProfileStyle from "./userProfile.module.css";
-import { RootState } from "@store/store"; 
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "@store/authSlice";
+import { getUser } from "@store/getUser";
 
 export default function UserProfile() {
     const dispatch = useDispatch();
-    const auth = useSelector((state: RootState) => state.auth.user);
+    const auth = useSelector(getUser);
     
     const handleLogOut = () => {
         dispatch(logoutUser()); 
