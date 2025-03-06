@@ -7,7 +7,7 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import { collection } from "./collectionMovies";
+import { collection } from "../../mock/collectionMovies";
 import MovieCard from "@components/movieCard/movieCard";
 import favoritesStyle from "@pages/favorites/favorites.module.css";
 
@@ -41,4 +41,4 @@ const MovieList: React.FC = () => {
   );
 };
 
-export default MovieList;
+export {MovieList};

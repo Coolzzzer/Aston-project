@@ -1,15 +1,19 @@
 import { TextField, Autocomplete, Card, CardContent } from "@mui/material";
-import { collection } from "../favorites/collectionMovies";
+import { collection } from "../../mock/collectionMovies";
+import { useMemo } from "react";
 
 function History() {
+  const options = useMemo(() => {
+    return collection.map((item) => {
+      return { id: item.Title, label: item.Title };
+    });
+  }, []);
   return (
     <Card>
       <CardContent>
         <Autocomplete
           disablePortal
-          options={collection.map((item) => {
-            return { id: item.Title, label: item.Title };
-          })}
+          options={options}
           sx={{ width: 400 }}
           renderInput={(params) => (
             <TextField {...params} label="Поиск фильмов" />
@@ -20,4 +24,4 @@ function History() {
   );
 }
 
-export default History;
+export { History };

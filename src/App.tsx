@@ -1,4 +1,4 @@
-import {URLs} from "./utils/constants/constants";
+import { URLs } from "./utils/constants/constants";
 import styles from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
 import Signup from "./pages/signup/signup";
@@ -6,8 +6,8 @@ import MovieFinder from "./pages/movieFinder/movieFinder";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Content from "./pages/main/content/content";
-import History from "@pages/history/history";
-import MovieList from "@pages/favorites/favorites";
+import { History } from "@pages/history/history";
+import { MovieList } from "@pages/favorites/favorites";
 
 function App() {
   return (

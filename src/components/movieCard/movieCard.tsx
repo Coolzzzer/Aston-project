@@ -1,5 +1,5 @@
 import { Card, CardContent, Typography } from "@mui/material";
-import { Movie } from "@pages/favorites/collectionMovies";
+import { Movie } from "src/mock/collectionMovies";
 import movieCardStyle from "./movieCard.module.css";
 
 const MovieCard: React.FC<{ movie: Movie }> = ({ movie }) => {

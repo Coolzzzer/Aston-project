@@ -182,7 +182,7 @@ export const collection: Movie[] = [
   },
 ];
 
-export interface Movie {
+export type Movie = {
   Title: string;
   Year: string;
   Rated: string;
