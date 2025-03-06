@@ -19,5 +19,10 @@ export const URLs = {
 //keys
 export const STORAGE_KEYS = {
   USER: "user",
-  FAVORITES: "favorites"
+  FAVORITES: "favorites",
+  HISTORY: "history"
 };
+
+export const TIMEZONE = {
+  RU: "ru-RU"
+}
