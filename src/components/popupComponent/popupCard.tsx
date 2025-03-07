@@ -1,17 +1,34 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { URLs } from "@utils/constants/constants";
 import popupStyle from "./popupCard.module.css";
-import { closeModal } from "@store/popupSlice";
-import { getModal } from "@store/getModal";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { CardDataForPopup } from "@utils/types/types";
+
 
 export function PopupCard() {
-    const {isOpen, cardData} = useSelector(getModal);
-    const dispatch = useDispatch();
+    const [data, setData] = useState<CardDataForPopup>();
+    const navigate = useNavigate();
+    const params = useParams();
 
     const handleCloseModal = () => {
-        dispatch(closeModal());
+        navigate(`${URLs.HOME_PAGE}`);
     }
 
-    if(!isOpen) {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await fetch(`${URLs.GET_CARD_DATA}${params.id}`);
+                const jsonData = await responce.json();
+                setData(jsonData);
+            } catch {
+                console.error('Error fetching data:', Error);
+            }
+        };
+        fetchData();
+}, []);
+
+    if(!data) {
         return null;
     }
 
@@ -23,15 +40,15 @@ export function PopupCard() {
                     <button onClick={handleCloseModal}>X</button>
                 </div>
                 <div className={popupStyle.popupContent}>
-                    <img src={cardData?.Poster} alt="movie" className={popupStyle.popupImg}/>
+                    <img src={data.Poster} alt="movie" className={popupStyle.popupImg}/>
                     <div className={popupStyle.popupInformation}>
-                        <p><b>{cardData?.Title}</b></p>
-                        <p><b>Year :</b> {cardData?.Year}</p>
-                        <p><b>Type :</b> {cardData?.Type}</p>
-                        <p><b>Director :</b> Christopher Nolan </p>
-                        <p><b>Casts :</b> Christian Bale, Michael Caine</p>
-                        <p><b>Synopsis :</b> Batman begins his fight to free crime.</p>
-                        <p><b>BIMDB Rating :</b> 8.2/10 b</p>
+                        <p><b>{data.Title}</b></p>
+                        <p><b>Year :</b> {data.Year}</p>
+                        <p><b>Genres :</b> {data.Genre}</p>
+                        <p><b>Director :</b> {data.Director}</p>
+                        <p><b>Casts :</b> {data.Actors}</p>
+                        <p><b>Country :</b> {data.Country}</p>
+                        <p><b>IMD Rating :</b> {data.Ratings[0].Value}</p>
                     </div>
                 </div>
                 <div className={popupStyle.popupFooter}>

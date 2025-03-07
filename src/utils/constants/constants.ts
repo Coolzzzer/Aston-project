@@ -12,7 +12,8 @@ export const URLs = {
   SIGN_UP: `/signup`,
   SIGN_IN: `/signin`,
   HISTORY: `/history`,
-  FAVORITES: `/favorites`
+  FAVORITES: `/favorites`,
+  GET_CARD_DATA: `https://www.omdbapi.com/?apikey=3e3e7f8f&i=`,
 } as const;
 
 

@@ -22,11 +22,11 @@ function App() {
       <Routes>
         <Route path={URLs.HOME_PAGE} element={<Content />}>
           <Route path={``} element={<MovieFinder />} />
+          <Route path={`:id`} element={<PopupCard />} />
           <Route path={URLs.SIGN_UP} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signup}/>} />
           <Route path={URLs.SIGN_IN} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signin}/>} />
         </Route>
       </Routes>
-      <PopupCard />
       <Footer />
     </div>
   );

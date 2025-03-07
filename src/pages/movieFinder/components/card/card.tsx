@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch} from 'react-redux';
 import './card.css';
-import { openModal } from '@store/popupSlice';
+import { URLs } from '@utils/constants/constants';
+import { useNavigate } from 'react-router-dom';
 
 
 type Movie = {
@@ -17,13 +17,12 @@ type CardProps = {
 }
 
 export const Card: React.FC<CardProps> = ({ currentMovies }) => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleOpenModal = (imdbID:string) => {
       const movie = currentMovies.find(movie => movie.imdbID === imdbID);
         if(movie) {
-          console.log(movie);
-          dispatch( openModal(movie));
+          navigate(`${URLs.HOME_PAGE}${movie.imdbID}`);
         }
       }
 
