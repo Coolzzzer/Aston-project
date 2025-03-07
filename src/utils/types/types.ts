@@ -10,9 +10,11 @@ export type AuthState = {
 };
 
 export type CardData = {
-  id: number;
-  title: string;
-  description: string;
+  imdbID: string;
+  Poster: string;
+  Title: string;
+  Type: string;
+  Year: string;
 };
 
 export type PopuplState = {
