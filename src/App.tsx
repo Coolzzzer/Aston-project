@@ -8,6 +8,7 @@ import {MovieFinder} from "./pages/movieFinder/movieFinder";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Content from "./pages/main/content/content";
+import { PopupCard } from '@components/popupComponent/popupCard';
 import {ProtectedRouterElement} from "@components/ProtectedRoute";
 import { getLoggedIn } from '@store/getLoggedIn';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path={URLs.SIGN_IN} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signin}/>} />
         </Route>
       </Routes>
+      <PopupCard />
       <Footer />
     </div>
   );
