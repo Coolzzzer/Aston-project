@@ -18,14 +18,7 @@ const MovieList: React.FC = () => {
         Избранное
       </Typography>
       <Container className={favoritesStyle.favoritesContainer} maxWidth="xl">
-        <Card
-          style={{
-            maxHeight: "80vh",
-            overflow: "auto",
-            borderRadius: "20px",
-            backgroundColor: "var(--header-footer-bg-color)", // здесь не получается пока вынести стиль в favorites.module.css, так как он кроме параметра max-height не отображает остальные, ищу как это исправить
-          }}
-        >
+        <Card className={favoritesStyle.favoritesCards}>
           <CardContent>
             <Grid2 className={favoritesStyle.grid2} container spacing={2}>
               {collection.map((movie, index) => (
@@ -41,4 +34,4 @@ const MovieList: React.FC = () => {
   );
 };
 
-export {MovieList};
+export { MovieList };
