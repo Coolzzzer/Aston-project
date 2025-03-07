@@ -1,0 +1,30 @@
+.userProfile {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.userData {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    color: #F2F2F2;
+}
+
+.buttonLeave {
+    height: 40px;
+    margin-right: 20px;
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
+}
+
+.userPhoto {
+    background-image: url("../../../assets/icons/free-icon-profile-4675250.png");
+    background-position: center;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+}
