@@ -2,8 +2,6 @@ import popupStyle from "./popupCard.module.css";
 
 export function PopupCard() {
 
-    
-
     return (
         <div className={popupStyle.popupMain}>
             <div className={popupStyle.popupContainer}>
