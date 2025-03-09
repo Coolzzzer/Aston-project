@@ -8,16 +8,21 @@ export const initialUser: User = {
 
 // Routes
 export const URLs = {
-  HOME_PAGE: '/',
+  HOME_PAGE: "/",
   SIGN_UP: `/signup`,
   SIGN_IN: `/signin`,
   HISTORY: `/history`,
   FAVORITES: `/favorites`
 } as const;
 
-
 //keys
 export const STORAGE_KEYS = {
   USER: "user",
   LOGGEDIN: "loggedIn",
+  FAVORITES: "favorites",
+  HISTORY: "history"
 };
+
+export const TIMEZONE = {
+  RU: "ru-RU"
+}
