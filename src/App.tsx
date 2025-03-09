@@ -8,11 +8,11 @@ import { MovieFinder } from "./pages/movieFinder/movieFinder";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Content from "./pages/main/content/content";
+import { PopupCard } from '@components/popupComponent/popupCard';
+import {ProtectedRouterElement} from "@components/ProtectedRoute";
 import { getLoggedIn } from '@store/getLoggedIn';
-
 import { History } from "@pages/history/history";
 import { MovieList } from "@pages/favorites/favorites";
-import { ProtectedRouterElement } from "@components/ProtectedRoute";
 
 function App() {
   const loggedIn = useSelector(getLoggedIn);
@@ -23,6 +23,7 @@ function App() {
       <Routes>
         <Route path={URLs.HOME_PAGE} element={<Content />}>
           <Route path={``} element={<MovieFinder />} />
+          <Route path={`:id`} element={<PopupCard />} />
           <Route path={URLs.SIGN_UP} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signup}/>} />
           <Route path={URLs.SIGN_IN} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signin}/>} />
           <Route path={URLs.FAVORITES} element={<MovieList />} />
