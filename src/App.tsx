@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import {URLs} from "./utils/constants/constants";
+import { URLs } from "./utils/constants/constants";
 import styles from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Signin } from "@pages/signin/signin";

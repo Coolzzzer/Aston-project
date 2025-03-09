@@ -20,4 +20,10 @@ export const URLs = {
 export const STORAGE_KEYS = {
   USER: "user",
   LOGGEDIN: "loggedIn",
+  FAVORITES: "favorites",
+  HISTORY: "history"
 };
+
+export const TIMEZONE = {
+  RU: "ru-RU"
+}
