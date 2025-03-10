@@ -6,7 +6,7 @@
 	align-items: center;
 }
 .title{
-	color: var(--font-family);
+	color: rgba(173, 255, 47, 1);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight);
 	font-size: 80px;

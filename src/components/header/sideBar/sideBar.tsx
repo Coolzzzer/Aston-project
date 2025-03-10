@@ -17,7 +17,7 @@ export function SideBar() {
   return (
     <nav className={sideBarStyle.sideBar}>
         <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_IN) ? sideBarStyle.buttonNone:""}`} onClick={handleNavigateToSignIn}>
-          Авторизоваться
+          Вход
         </button>
         <button className={`${sideBarStyle.button} ${(pathname == URLs.SIGN_UP) ? sideBarStyle.buttonNone:""}`} onClick={handleNavigateToSignUp}>
           Регистрация
