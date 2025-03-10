@@ -1,42 +1,63 @@
-import React from 'react';
-import './card.css';
-import { URLs } from '@utils/constants/constants';
-import { useNavigate } from 'react-router-dom';
-
-
-type Movie = {
-  imdbID: string;
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-}
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@store/store";
+import { addFavorite } from "@store/favoritesSlice";
+import { URLs } from "@utils/constants/constants";
+import { useNavigate } from "react-router-dom";
+import cardStyles from "./card.module.css";
+import { Movie } from "@utils/types/types";
 
 type CardProps = {
   currentMovies: Movie[];
-}
+};
 
 export const Card: React.FC<CardProps> = ({ currentMovies }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favorites
+  );
+  
 
-  const handleOpenModal = (imdbID:string) => {
-      const movie = currentMovies.find(movie => movie.imdbID === imdbID);
-        if(movie) {
-          navigate(`${URLs.HOME_PAGE}${movie.imdbID}`);
-        }
-      }
+  const handleOpenModal = (imdbID: string) => {
+    const movie = currentMovies.find((movie) => movie.imdbID === imdbID);
+    if (movie) {
+      navigate(`${URLs.HOME_PAGE}${movie.imdbID}`);
+    }
+  };
 
-	return (
+  const handleLike = (movie: Movie) => {
+    dispatch(addFavorite(movie));
+  };
+
+  return (
     <>
-      {currentMovies.map((movie) => (
-        <div className="card" key={movie.imdbID}>
-          <img className="cardImg" src={movie.Poster} alt={movie.Title} onClick={() => handleOpenModal(movie.imdbID)}/>
-          <div className="cardTitle">{movie.Title}</div>
-          <div className="yearCreation">{movie.Year}</div>
-          <button className="details" onClick={() => handleOpenModal(movie.imdbID)}>Detail</button>
-        </div>
-      ))}
+      {currentMovies.map((movie) => {
+        const isLiked = favorites.some((fav) => fav.imdbID === movie.imdbID);
+        return (
+          <div className={cardStyles.card} key={movie.imdbID}>
+            <img
+              className={cardStyles.cardImg}
+              src={movie.Poster}
+              alt={movie.Title}
+              onClick={() => handleOpenModal(movie.imdbID)}
+            />
+            <div className={cardStyles.cardTitle}>{movie.Title}</div>
+            <div className={cardStyles.yearCreation}>{movie.Year}</div>
+            <button
+              className={cardStyles.details}
+              onClick={() => handleOpenModal(movie.imdbID)}
+            >
+              Подробнее
+            </button>
+            <button
+              className={`${cardStyles.likeButton} ${isLiked ? cardStyles.pressed : ""}`}
+              title="like"
+              onClick={() => handleLike(movie)}
+            ></button>
+          </div>
+        );
+      })}
     </>
   );
 };
-

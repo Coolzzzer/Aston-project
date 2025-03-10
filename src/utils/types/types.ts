@@ -24,7 +24,7 @@ export type PopuplState = {
 
 type StringObject = {
   [key: string]: string;
-}
+};
 
 export type CardDataForPopup = {
   Title: string;
@@ -35,14 +35,18 @@ export type CardDataForPopup = {
   Actors: string;
   Country: string;
   Ratings: StringObject[];
-}
-export type Film = {
-  id: string;
-  title: string;
+};
+
+export type Movie = {
+  imdbID: string;
+  Poster: string;
+  Title: string;
+  Type: string;
+  Year: string;
 };
 
 export type FavoritesState = {
-  favorites: Film[];
+  favorites: Movie[];
 };
 
 export type SearchHistoryEntry = {

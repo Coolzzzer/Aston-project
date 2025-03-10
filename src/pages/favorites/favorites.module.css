@@ -1,20 +1,11 @@
 .favoritesStack {
-    width: 100%;
-    gap: 20px;
-    padding: 20px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 40px;
 }
 
-.favoritesContainer {
-    max-height: 100%;
-}
-
-/* .favoritesCards {
-    max-height: 80vh;
-    overflow: auto;
-    border-radius: 20px;
-    background-color: var(--header-footer-bg-color);
-} */
-
-.grid2{
-    justify-content: center;
+.grid2 {
+  justify-content: center;
 }

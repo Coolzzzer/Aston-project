@@ -55,7 +55,7 @@ export function Signin() {
           className={signinStyles.box}
         >
           <Typography variant="h4" gutterBottom>
-            Авторизация
+            Вход
           </Typography>
           <form onSubmit={handleSubmit} className={signinStyles.form}>
             <TextField
