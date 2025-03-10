@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FavoritesState, Film } from "@utils/types/types";
+import { FavoritesState, Movie } from "@utils/types/types";
 import { STORAGE_KEYS } from "@utils/constants/constants";
 import { getLocalStorageItem, setLocalStorageItem } from "@utils/storage/localStorage";
 
@@ -11,12 +11,14 @@ const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addFavorite: (state, action: PayloadAction<Film>) => {
-      const exists = state.favorites.find((film) => film.id === action.payload.id);
+    addFavorite: (state, action: PayloadAction<Movie>) => {
+      const exists = state.favorites.some((film) => film.imdbID === action.payload.imdbID);
       if (!exists) {
         state.favorites.push(action.payload);
-        setLocalStorageItem(STORAGE_KEYS.FAVORITES, state.favorites);
+      } else {
+        state.favorites = state.favorites.filter((film) => film.imdbID !== action.payload.imdbID);
       }
+      setLocalStorageItem(STORAGE_KEYS.FAVORITES, state.favorites);
     },
   },
 });
