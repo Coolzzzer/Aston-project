@@ -33,7 +33,7 @@ export const Card: React.FC<CardProps> = ({ currentMovies }) => {
           <img className="cardImg" src={movie.Poster} alt={movie.Title} onClick={() => handleOpenModal(movie.imdbID)}/>
           <div className="cardTitle">{movie.Title}</div>
           <div className="yearCreation">{movie.Year}</div>
-          <button className="details" onClick={() => handleOpenModal(movie.imdbID)}>Detail</button>
+          <button className="details" onClick={() => handleOpenModal(movie.imdbID)}>Подробнее</button>
         </div>
       ))}
     </>
