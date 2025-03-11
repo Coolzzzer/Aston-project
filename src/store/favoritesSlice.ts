@@ -5,6 +5,9 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "@utils/storage/localStorage";
+import { RootState } from "@store/store";
+
+
 
 const initialState: FavoritesState = {
   favorites: getLocalStorageItem(STORAGE_KEYS.FAVORITES) || [],
@@ -38,3 +41,4 @@ const favoritesSlice = createSlice({
 
 export const { addFavorite, removeFavorite } = favoritesSlice.actions;
 export default favoritesSlice.reducer;
+export const selectFavorites = (state: RootState) => state.favorites.favorites;

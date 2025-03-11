@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "@store/store";
 import {
   Card,
   CardContent,
@@ -11,11 +10,10 @@ import {
 } from "@mui/material";
 import { MovieCard } from "@components/movieCard/movieCard";
 import favoritesStyle from "@pages/favorites/favorites.module.css";
+import { selectFavorites } from "@store/favoritesSlice";
 
 const MovieList: React.FC = () => {
-  const favorites = useSelector(
-    (state: RootState) => state.favorites.favorites
-  );
+  const favorites = useSelector(selectFavorites);
 
   return (
     <Stack className={favoritesStyle.favoritesStack}>
@@ -36,7 +34,7 @@ const MovieList: React.FC = () => {
               {favorites.length > 0 ? (
                 favorites.map((movie) => (
                   <Grid2 key={movie.imdbID}>
-                    <MovieCard movie={movie}  />
+                    <MovieCard movie={movie} />
                   </Grid2>
                 ))
               ) : (
