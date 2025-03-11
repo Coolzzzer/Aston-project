@@ -16,6 +16,9 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     addSearchEntry: (state, action: PayloadAction<string>) => {
+      const lastEntry = state.history[0];
+      if (lastEntry?.query === action.payload) return;
+
       const newEntry: SearchHistoryEntry = {
         id: uuidv4(),
         query: action.payload,
@@ -25,8 +28,12 @@ const historySlice = createSlice({
       state.history.unshift(newEntry);
       setLocalStorageItem(STORAGE_KEYS.HISTORY, state.history);
     },
+    clearHistory: (state) => {
+      state.history = [];
+      setLocalStorageItem(STORAGE_KEYS.HISTORY, []);
+    },
   },
 });
 
-export const { addSearchEntry } = historySlice.actions;
+export const { addSearchEntry, clearHistory } = historySlice.actions;
 export default historySlice.reducer;
