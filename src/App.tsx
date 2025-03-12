@@ -13,6 +13,7 @@ import { getLoggedIn } from '@store/getLoggedIn';
 import { History } from "@pages/history/history";
 import { InputField } from '@pages/inputField/inputField';
 import { ResultField } from '@components/resultField/resultField';
+import { Favorites } from "@pages/favorites/favorites";
 
 function App() {
   const loggedIn = useSelector(getLoggedIn);
@@ -26,7 +27,8 @@ function App() {
           <Route path={`:id`} element={<PopupCard />} />
           <Route path={URLs.SIGN_UP} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signup}/>} />
           <Route path={URLs.SIGN_IN} element={<ProtectedRouterElement loggedIn={!loggedIn} elements={Signin}/>} />
-          <Route path={URLs.HISTORY} element={<History />} />
+          <Route path={URLs.HISTORY} element={<ProtectedRouterElement loggedIn={loggedIn} elements={History}/>} />
+          <Route path={URLs.FAVORITES} element={<ProtectedRouterElement loggedIn={loggedIn} elements={Favorites}/>} />
         </Route>
       </Routes>
       <ResultField />

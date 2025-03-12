@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import {
   Card,
@@ -12,7 +11,7 @@ import { MovieCard } from "@components/movieCard/movieCard";
 import favoritesStyle from "@pages/favorites/favorites.module.css";
 import { selectFavorites } from "@store/favoritesSlice";
 
-const MovieList: React.FC = () => {
+export function Favorites() {
   const favorites = useSelector(selectFavorites);
 
   return (
@@ -50,4 +49,3 @@ const MovieList: React.FC = () => {
   );
 };
 
-export { MovieList };

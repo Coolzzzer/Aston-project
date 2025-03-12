@@ -1,4 +1,3 @@
-import React from "react";
 import {
   List,
   ListItemButton,
@@ -15,7 +14,7 @@ import { URLs } from "@utils/constants/constants";
 import historyStyles from "./history.module.css";
 import { selectHistory } from "@store/historySlice";
 
-export const History: React.FC = () => {
+export function History() {
   const history = useSelector(selectHistory);
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectMovies } from "@store/moviesSlice";
 
 export const usePagination = (moviesPerPage: number = 6) => {
-  const movies = useSelector(state => state.movies.movies);
+  const movies = useSelector(selectMovies);
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
@@ -22,7 +23,3 @@ export const usePagination = (moviesPerPage: number = 6) => {
   };
   return { currentMovies, currentPage, nextPage, prevPage };
 };
-
-
-
-
