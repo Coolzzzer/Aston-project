@@ -9,22 +9,9 @@ export type AuthState = {
   loggedIn: boolean;
 };
 
-export type CardData = {
-  imdbID: string;
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-};
-
 export type MoviesState = {
   movies: Movie[],
 }
-
-export type PopuplState = {
-  isOpen: boolean;
-  cardData: CardData | null;
-};
 
 type StringObject = {
   [key: string]: string;
@@ -48,8 +35,6 @@ export type Movie = {
   Type: string;
   Year: string;
 };
-
-
 
 export type FavoritesState = {
   favorites: Movie[];
