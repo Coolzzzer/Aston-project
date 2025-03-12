@@ -77,6 +77,10 @@
   color: rgba(187, 66, 66, 0.649);
 }
 
+.likeButton:focus {
+  outline: none;
+}
+
 /* активный клик */
 .likeButton:active {
   transform: scale(0.9);
@@ -84,7 +88,7 @@
 
 /* лайкнули */
 .likeButton.pressed::before {
-  content: "♡"; /* Filled heart */
+  content: "♡";
   color: rgba(187, 66, 66, 0.649);
 }
 
