@@ -12,6 +12,7 @@ import {ProtectedRouterElement} from "@components/ProtectedRoute";
 import { getLoggedIn } from '@store/getLoggedIn';
 import { History } from "@pages/history/history";
 import { InputField } from '@pages/inputField/inputField';
+import { ResultField } from '@components/resultField/resultField';
 
 function App() {
   const loggedIn = useSelector(getLoggedIn);
@@ -28,6 +29,7 @@ function App() {
           <Route path={URLs.HISTORY} element={<History />} />
         </Route>
       </Routes>
+      <ResultField />
       <Footer />
     </div>
   );

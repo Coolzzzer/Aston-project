@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { InputField } from "@components/inputField/inputField";
+import { InputField } from "@components/inputField-zero/inputField";
 import { ResultField } from "@components/resultField/resultField";
 import movieFinderStyles from "./movieFInder.module.css";
 import { Movie } from "@utils/types/types";
