@@ -9,14 +9,14 @@ import {
   CardContent,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@store/store";
 import { clearHistory } from "@store/historySlice";
 import { useNavigate } from "react-router-dom";
 import { URLs } from "@utils/constants/constants";
 import historyStyles from "./history.module.css";
+import { selectHistory } from "@store/historySlice";
 
 export const History: React.FC = () => {
-  const history = useSelector((state: RootState) => state.history.history);
+  const history = useSelector(selectHistory);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

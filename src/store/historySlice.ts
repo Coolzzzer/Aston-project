@@ -6,6 +6,8 @@ import {
   setLocalStorageItem,
 } from "@utils/storage/localStorage";
 import { v4 as uuidv4 } from "uuid";
+import { RootState } from "@store/store";
+
 
 const initialState: HistoryState = {
   history: getLocalStorageItem(STORAGE_KEYS.HISTORY) || [],
@@ -37,3 +39,5 @@ const historySlice = createSlice({
 
 export const { addSearchEntry, clearHistory } = historySlice.actions;
 export default historySlice.reducer;
+export const selectHistory = (state: RootState) => state.history.history;
+
