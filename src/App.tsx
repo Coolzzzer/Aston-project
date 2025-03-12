@@ -14,9 +14,12 @@ import { History } from "@pages/history/history";
 import { InputField } from '@pages/inputField/inputField';
 import { ResultField } from '@components/resultField/resultField';
 import { Favorites } from "@pages/favorites/favorites";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const loggedIn = useSelector(getLoggedIn);
+  const location = useLocation();
+  const isHomePage = location.pathname === URLs.HOME_PAGE;
 
   return (
     <div className={styles.app}>
@@ -31,7 +34,7 @@ function App() {
           <Route path={URLs.FAVORITES} element={<ProtectedRouterElement loggedIn={loggedIn} elements={Favorites}/>} />
         </Route>
       </Routes>
-      <ResultField />
+      {isHomePage && <ResultField />}
       <Footer />
     </div>
   );

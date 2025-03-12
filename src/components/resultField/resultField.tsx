@@ -1,10 +1,10 @@
-import {Card}from '@components/card/card';
-import {usePagination} from '@utils/hooks/usePagination';
+import { Card } from "@components/card/card";
+import { usePagination } from "@utils/hooks/usePagination";
 import resultFieldStyles from "./resultField.module.css";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { selectMovies } from "@store/moviesSlice";
 
-export const ResultField: React.FC= () => {
+export const ResultField: React.FC = () => {
   const movies = useSelector(selectMovies);
   const { currentMovies, currentPage, nextPage, prevPage } = usePagination();
   return (
