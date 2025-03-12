@@ -17,6 +17,10 @@ export type CardData = {
   Year: string;
 };
 
+export type MoviesState = {
+  movies: Movie[],
+}
+
 export type PopuplState = {
   isOpen: boolean;
   cardData: CardData | null;
@@ -44,6 +48,8 @@ export type Movie = {
   Type: string;
   Year: string;
 };
+
+
 
 export type FavoritesState = {
   favorites: Movie[];

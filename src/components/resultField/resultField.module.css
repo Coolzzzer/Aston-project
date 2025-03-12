@@ -1,21 +1,24 @@
 .resultField{
-	display: var(--display);
+	display: flex;
 	flex-wrap: wrap;
 	width: 100vw;
 	max-width: 2200px;
 	height: auto;
 	background-color: var(--background-color);
-	justify-content: var(--justify-content);
+	justify-content: space-around;
 	margin: auto;
 	flex-grow: 1;
   gap: 20px;
 }
 
 .resultContainer {
-  display: var(--display);
+  display: flex;
   flex-direction: column;
-  min-width: 100vw;
+  min-width: var(--header-footer-min-width);
+  max-width: var(--header-footer-max-width);
   justify-content: space-between;
+  background-color: #ffffff;
+  align-items: center;
 }
 
 .pagination {
@@ -38,7 +41,6 @@
 }
 
 .pagination button:disabled {
-  
 	background-color: rgba(173, 255, 47, 1);
   cursor: not-allowed;
 }
