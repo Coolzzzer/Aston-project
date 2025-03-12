@@ -33,6 +33,8 @@ function App() {
           <Route path={URLs.HISTORY} element={<ProtectedRouterElement loggedIn={loggedIn} elements={History}/>} />
           <Route path={URLs.FAVORITES} element={<ProtectedRouterElement loggedIn={loggedIn} elements={Favorites}/>} />
         </Route>
+        <Route path={URLs.FAVORITES} element={<ProtectedRouterElement loggedIn={loggedIn} elements={Favorites} />} />
+        <Route path={`${URLs.FAVORITES}/:id`} element={<PopupCard />} />
       </Routes>
       {isHomePage && <ResultField />}
       <Footer />

@@ -10,7 +10,11 @@ export function PopupCard() {
   const navigate = useNavigate();
 
   const handleCloseModal = () => {
-    navigate(URLs.HOME_PAGE);
+    if (location.pathname.includes(URLs.FAVORITES)) {
+      navigate(URLs.FAVORITES);
+    } else {
+      navigate(URLs.HOME_PAGE);
+    }
   };
 
   useEffect(() => {
