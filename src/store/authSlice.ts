@@ -22,21 +22,26 @@ const authSlice = createSlice({
     },
     loginUser: (state, action: PayloadAction<User>) => {
       const storedUser = getLocalStorageItem<User>(STORAGE_KEYS.USER);
-
-      if (
-        storedUser &&
-        storedUser.email === action.payload.email &&
-        storedUser.password === action.payload.password
-      ) {
-        state.user = storedUser;
-        state.loggedIn = true;
-        setLocalStorageItem(STORAGE_KEYS.LOGGEDIN, state.loggedIn);
-        setLocalStorageItem(STORAGE_KEYS.USER, state.user);
-      } else {
-        throw new Error("Неверный email или пароль");
+      if (!storedUser) {
+        throw new Error("Неверный Логин и Пароль");
       }
+
+      const emailMatches = storedUser.email === action.payload.email;
+      const passwordMatches = storedUser.password === action.payload.password;
+
+      if (!emailMatches && !passwordMatches) {
+        throw new Error("Неверный Логин и Пароль");
+      } else if (!emailMatches) {
+        throw new Error("Неверный Логин");
+      } else if (!passwordMatches) {
+        throw new Error("Неверный Пароль");
+      }
+      state.user = storedUser;
+      state.loggedIn = true;
+      setLocalStorageItem(STORAGE_KEYS.LOGGEDIN, state.loggedIn);
+      setLocalStorageItem(STORAGE_KEYS.USER, state.user);
     },
-    
+
     logoutUser: (state) => {
       state.loggedIn = false;
       setLocalStorageItem(STORAGE_KEYS.LOGGEDIN, state.loggedIn);
