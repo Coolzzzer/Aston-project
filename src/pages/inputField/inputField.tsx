@@ -1,28 +1,37 @@
-import React, { useState } from "react";
-import inputStyle from "./inputField.module.css";
+import { useState } from "react";
+import { useDispatch} from "react-redux";
 import { fetchMovies } from "@store/getFetchMovies";
-import { useDispatch } from "react-redux";
-import { saveMovies } from "@store/moviesSlice";
-import { Movie } from "@utils/types/types";
+import { saveMovies} from "@store/moviesSlice";
 import { addSearchEntry } from "@store/historySlice";
+import { Movie } from "@utils/types/types";
+import inputStyle from "./inputField.module.css";
 
 export const InputField: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [noResults, setNoResults] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchTerm(event.target.value);
+    setNoResults(false); 
   };
 
   const handleMoviesFetched = (data: Movie[]): void => {
     dispatch(saveMovies(data));
+    setNoResults(data.length === 0);
   };
 
   const handleSearch = (): void => {
+    if (!searchTerm.trim()) return;
     dispatch(addSearchEntry(searchTerm));
     fetchMovies(searchTerm, handleMoviesFetched);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -30,18 +39,20 @@ export const InputField: React.FC = () => {
       <div className={inputStyle.content}>
         <div className={inputStyle.title}>Movie Finder</div>
         <br />
-        <input
-          className={inputStyle.searchInput}
-          value={searchTerm}
-          onChange={handleInputChange}
-          placeholder="Найти фильм..."
-        />
-        <button className={inputStyle.searchButton} onClick={handleSearch}>
-          Поиск
-        </button>
-        <div className={inputStyle.example}>
-          Пример: Batman, Avengers, Home Alone
+        <div className={inputStyle.searchContainer}>
+          <input
+            className={inputStyle.searchInput}
+            value={searchTerm}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            placeholder="Найти фильм..."
+          />
+          <button className={inputStyle.searchButton} onClick={handleSearch}>
+            Поиск
+          </button>
         </div>
+        {noResults && <div className={inputStyle.noResults}>По вашему запросу ничего не найдено.</div>}
+        <div className={inputStyle.example}>Пример: Batman, Avengers, Home Alone</div>
       </div>
     </div>
   );

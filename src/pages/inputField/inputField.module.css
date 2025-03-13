@@ -1,66 +1,77 @@
 .inputField {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.title{
-	color: rgba(173, 255, 47, 1);
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 80px;
-	line-height: 120px;
-	letter-spacing: var(--letter-spacing);
-	display: var(--display);
-	justify-content: var(--justify-content);
-	margin-bottom: -20px;
+
+.title {
+  color: rgba(173, 255, 47, 1);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-size: 80px;
+  line-height: 120px;
+  text-align: center;
+  margin-bottom: -20px;
 }
-.slogan{
-	color: rgba(255, 255, 255, 1);
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 36px;
-	line-height: 54px;
-	letter-spacing: 0%;
-	margin-bottom: 40px;
-	display: var(--display);
-	justify-content: var(--justify-content);
+
+.slogan {
+  color: rgba(255, 255, 255, 1);
+  font-family: var(--font-family);
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
 }
-.searchInput{
-	width: 608px;
-	height: 23px;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-	color: var(--color);
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 24px;
-	line-height: 36px;
-	letter-spacing: var(--letter-spacing);
-	padding: 30px;
-	border: none;
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.searchButton{
-	background-color:rgba(173, 255, 47, 1);
-	width: 159px;
-	height: 83px;
-	top: 559px;
-	left: 974px;
-	border-radius: 0;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	color: var(--color);
-	font-family:var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 24px;
-	line-height: 36px;
-	letter-spacing: var(--letter-spacing);
+
+.searchInput {
+  width: 600px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 24px;
+  outline: none;
 }
-.example{
-	margin-top: 40px;
-	color: rgba(189, 189, 189, 1);
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 18px;
-	line-height: 27px;
-	letter-spacing: var(--letter-spacing);
+
+.searchButton {
+  background-color: rgba(173, 255, 47, 1);
+  width: 150px;
+  height: 100px;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-left: -20px;
+}
+
+.searchButton:hover {
+  background-color: rgba(153, 235, 27, 1);
+}
+
+.searchButton:active {
+  background-color: rgba(133, 215, 17, 1);
+  transform: scale(0.98);
+}
+
+.example {
+  margin-top: 20px;
+  color: rgba(189, 189, 189, 1);
+  font-family: var(--font-family);
+  font-size: 18px;
+  text-align: center;
+}
+
+.noResults {
+  margin-top: 15px;
+  color: rgba(255, 100, 100, 1);
+  font-family: var(--font-family);
+  font-size: 20px;
+  text-align: center;
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite } from "@store/favoritesSlice";
 import { URLs } from "@utils/constants/constants";
