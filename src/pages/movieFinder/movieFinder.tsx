@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { InputField } from './components/inputField/inputField';
 import { ResultField } from './components/resultField/resultField';
 import { Filter } from './components/filter/filter';
-import './components/inputField/inputFiels.css';
+import './components/inputField/inputField.css';
 import './components/resultField/resultField.css';
 import './movieFinder.css';
+
+const API_URL = import.meta.env.VITE_OMDB_API_URL;
 
 export const MovieFinder: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -14,8 +16,8 @@ export const MovieFinder: React.FC = () => {
   const fetchMovies = async (searchQuery: string, filterQuery: number | null) => {
     try {
       const url = filterQuery
-        ? `https://www.omdbapi.com/?apikey=3e3e7f8f&s=${searchQuery}&y=${filterQuery}`
-        : `https://www.omdbapi.com/?apikey=3e3e7f8f&s=${searchQuery}`;
+        ? `${API_URL}${searchQuery}&y=${filterQuery}`
+        : `${API_URL}${searchQuery}`;
       const response = await fetch(url);
       const data = await response.json();
       if (data.Search) {
@@ -47,12 +49,13 @@ export const MovieFinder: React.FC = () => {
         searchTerm={searchTerm}
         handleInputChange={handleInputChange}
         handleSearch={handleSearch}
-				children={<Filter
-					filterTerm={filterTerm}
-					handleInputFilterChange={handleInputFilterChange}
-				/>}
-      ></InputField>
-
+        children={
+          <Filter
+            filterTerm={filterTerm}
+            handleInputFilterChange={handleInputFilterChange}
+          />
+        }
+      />
       <ResultField movies={movies} />
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './filter.css'
 type InputFilterProps = {
-  filterTerm: number | null;
+  filterTerm?: number;
   handleInputFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -14,25 +14,21 @@ export const Filter: React.FC<InputFilterProps> = ({ filterTerm, handleInputFilt
   };
 
   return (
-    <>
 		<div className='filterFild'>
 			<button 
 				onClick={handleClick} 
 				className={isActive ? 'filterButton active' : 'filterButton'}
 			>Filter</button>
 			{showInput && (
-				<>
-					<input
-						className={'filterInput'}
-						placeholder='Enter year'
-						type="number" 
-						value={filterTerm ?? ''}
-						onChange={handleInputFilterChange} 
-					/>
-				</>
+				<input
+					className={'filterInput'}
+					placeholder='Enter year'
+					type="number" 
+					value={filterTerm ?? ''}
+					onChange={handleInputFilterChange} 
+				/>
 			)}
 		</div>
-    </>
   );
 };
 

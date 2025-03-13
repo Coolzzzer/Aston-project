@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import './inputFiels.css';
+import './inputField.css';
 type InputFieldProps = {
   searchTerm: string;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
