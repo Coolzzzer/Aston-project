@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { fetchMovies } from "@store/getFetchMovies";
 import { saveMovies } from "@store/moviesSlice";
@@ -7,11 +7,13 @@ import { Movie } from "@utils/types/types";
 import inputStyle from "./inputField.module.css";
 import { useLocation } from "react-router-dom";
 import { Filter } from "@components/filter/filter";
+import debounce from "lodash.debounce"; 
 
 export const InputField: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [noResults, setNoResults] = useState<boolean>(false);
-  const [filterTerm, setFilterTerm] = useState<number | null>(null); // Фильтр может быть null
+  const [filterTerm, setFilterTerm] = useState<number | null>(null);
+  const [suggestions, setSuggestions] = useState<Movie[]>([]);
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -23,11 +25,28 @@ export const InputField: React.FC = () => {
     }
   }, [location.state]);
 
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setSearchTerm(event.target.value);
+  const debouncedFetchMovies = useCallback(
+    debounce((value: string) => {
+      fetchMovies(value, filterTerm, setSuggestions);
+    }, 500),
+    [filterTerm]
+  );
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const value = event.target.value;
+    setSearchTerm(value);
     setNoResults(false);
+
+    if (value) {
+      debouncedFetchMovies(value); 
+    } else {
+      setSuggestions([]); 
+    }
+  };
+
+  const handleSuggestionClick = (suggestion: string): void => {
+    setSearchTerm(suggestion); 
+    setSuggestions([]);
   };
 
   const handleMoviesFetched = (data: Movie[]): void => {
@@ -51,15 +70,9 @@ export const InputField: React.FC = () => {
     }
   };
 
-  const handleInputFilterChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleInputFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value ? parseInt(event.target.value, 10) : null;
     setFilterTerm(value);
-  };
-
-  const handleResetFilter = (): void => {
-    setFilterTerm(null);
   };
 
   return (
@@ -79,15 +92,28 @@ export const InputField: React.FC = () => {
             Поиск
           </button>
         </div>
-        <Filter
-          handleInputFilterChange={handleInputFilterChange}
-          handleResetFilter={handleResetFilter}
-        />
+
+        {suggestions.length > 0 && (
+          <ul className={inputStyle.suggestionsList}>
+            {suggestions.map((movie, index) => (
+              <li
+                key={index}
+                className={inputStyle.suggestionItem}
+                onClick={() => handleSuggestionClick(movie.Title)}
+              >
+                {movie.Title} ({movie.Year})
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <Filter handleInputFilterChange={handleInputFilterChange} />
         {noResults && (
           <div className={inputStyle.noResults}>
             По вашему запросу ничего не найдено.
           </div>
         )}
+
         <div className={inputStyle.example}>
           Пример: Batman, Avengers, Home Alone
         </div>
