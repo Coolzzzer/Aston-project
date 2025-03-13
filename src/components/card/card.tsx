@@ -1,11 +1,10 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@store/store";
 import { addFavorite } from "@store/favoritesSlice";
 import { URLs } from "@utils/constants/constants";
 import { useNavigate } from "react-router-dom";
 import cardStyles from "./card.module.css";
 import { Movie } from "@utils/types/types";
+import { selectFavorites } from "@store/favoritesSlice";
 
 type CardProps = {
   currentMovies: Movie[];
@@ -14,10 +13,7 @@ type CardProps = {
 export const Card: React.FC<CardProps> = ({ currentMovies }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const favorites = useSelector(
-    (state: RootState) => state.favorites.favorites
-  );
-  
+  const favorites = useSelector(selectFavorites);
 
   const handleOpenModal = (imdbID: string) => {
     const movie = currentMovies.find((movie) => movie.imdbID === imdbID);

@@ -4,7 +4,34 @@
 }
 
 .card {
-  width: 345px;
-  margin: 16px;
-  height: 90%;
+  width: 330px;
+  margin: 10px;
+  height: 520px;
+  position: relative;
+
+}
+
+.content {
+  background-color: rgba(173, 255, 47, 1)
+}
+
+.deleteButton {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  background-color: rgba(173, 255, 47, .7);
+  border-radius: 20px;
+  margin: 0;
+  border-style: dotted;
+  border-color: black;
+  padding: 1px 4px;
+}
+
+.deleteButton:hover {
+  color: black;
 }

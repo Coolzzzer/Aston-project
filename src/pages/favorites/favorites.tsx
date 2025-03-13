@@ -1,6 +1,4 @@
-import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "@store/store";
 import {
   Card,
   CardContent,
@@ -9,23 +7,22 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import MovieCard from "@components/movieCard/movieCard";
+import { MovieCard } from "@components/movieCard/movieCard";
 import favoritesStyle from "@pages/favorites/favorites.module.css";
+import { selectFavorites } from "@store/favoritesSlice";
 
-const MovieList: React.FC = () => {
-  const favorites = useSelector(
-    (state: RootState) => state.favorites.favorites
-  );
+export function Favorites() {
+  const favorites = useSelector(selectFavorites);
 
   return (
     <Stack className={favoritesStyle.favoritesStack}>
-      <Typography variant="h2" component="div" color= 'white'>
+      <Typography variant="h2" component="div" color="white">
         Избранное
       </Typography>
       <Container className={favoritesStyle.favoritesContainer} maxWidth="xl">
         <Card
           style={{
-            maxHeight: "80vh",
+            maxHeight: "60vh",
             overflow: "auto",
             borderRadius: "60px",
             backgroundColor: "var(--header-footer-bg-color)",
@@ -52,4 +49,3 @@ const MovieList: React.FC = () => {
   );
 };
 
-export { MovieList };
