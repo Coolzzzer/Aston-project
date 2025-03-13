@@ -6,10 +6,12 @@ import { addSearchEntry } from "@store/historySlice";
 import { Movie } from "@utils/types/types";
 import inputStyle from "./inputField.module.css";
 import { useLocation } from "react-router-dom";
+import { Filter } from "@components/filter/filter";
 
 export const InputField: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [noResults, setNoResults] = useState<boolean>(false);
+  const [filterTerm, setFilterTerm] = useState<number | null>(null);
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -41,13 +43,17 @@ export const InputField: React.FC = () => {
   const handleSearch = (): void => {
     if (!searchTerm.trim()) return;
     dispatch(addSearchEntry(searchTerm));
-    fetchMovies(searchTerm, handleMoviesFetched);
+    fetchMovies(searchTerm, filterTerm, handleMoviesFetched);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       handleSearch();
     }
+  };
+  const handleInputFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value ? parseInt(event.target.value, 10) : null;
+    setFilterTerm(value);
   };
 
   return (
@@ -66,12 +72,17 @@ export const InputField: React.FC = () => {
           <button className={inputStyle.searchButton} onClick={handleSearch}>
             Поиск
           </button>
+
         </div>
+        <Filter
+            handleInputFilterChange={handleInputFilterChange}
+        />
         {noResults && (
           <div className={inputStyle.noResults}>
             По вашему запросу ничего не найдено.
           </div>
         )}
+
         <div className={inputStyle.example}>
           Пример: Batman, Avengers, Home Alone
         </div>

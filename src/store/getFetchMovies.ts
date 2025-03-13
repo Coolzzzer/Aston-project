@@ -5,10 +5,11 @@ const apiKey = `3e3e7f8f`;
 
 export const fetchMovies = async (
   query: string,
+  filter: number,
   setMovies: (data: Movie[]) => void
 ): Promise<void> => {
   try {
-    const response = await fetch(`${URLs.GET_CARD_DATA}${apiKey}&s=${query}`);
+    const response = await fetch(`${URLs.GET_CARD_DATA}${apiKey}&s=${query}&y=${filter}`);
     const data = await response.json();
     if (data.Search) {
       setMovies(data.Search);

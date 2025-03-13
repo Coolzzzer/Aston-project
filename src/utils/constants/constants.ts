@@ -1,4 +1,5 @@
 import { User } from "../types/types";
+const API_URL = import.meta.env.VITE_OMDB_API_URL;
 
 export const initialUser: User = {
   name: "",
@@ -13,7 +14,7 @@ export const URLs = {
   SIGN_IN: `/signin`,
   HISTORY: `/history`,
   FAVORITES: `/favorites`,
-  GET_CARD_DATA: `https://www.omdbapi.com/?apikey=3e3e7f8f&i=`,
+  GET_CARD_DATA:  API_URL,
 } as const;
 
 //keys
