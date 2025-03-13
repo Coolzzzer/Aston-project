@@ -11,11 +11,10 @@ import { Filter } from "@components/filter/filter";
 export const InputField: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [noResults, setNoResults] = useState<boolean>(false);
-  const [filterTerm, setFilterTerm] = useState<number | null>(null);
+  const [filterTerm, setFilterTerm] = useState<number | null>(null); // Фильтр может быть null
   const dispatch = useDispatch();
 
   const location = useLocation();
-
   const resultRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -51,9 +50,16 @@ export const InputField: React.FC = () => {
       handleSearch();
     }
   };
-  const handleInputFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleInputFilterChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     const value = event.target.value ? parseInt(event.target.value, 10) : null;
     setFilterTerm(value);
+  };
+
+  const handleResetFilter = (): void => {
+    setFilterTerm(null);
   };
 
   return (
@@ -72,17 +78,16 @@ export const InputField: React.FC = () => {
           <button className={inputStyle.searchButton} onClick={handleSearch}>
             Поиск
           </button>
-
         </div>
         <Filter
-            handleInputFilterChange={handleInputFilterChange}
+          handleInputFilterChange={handleInputFilterChange}
+          handleResetFilter={handleResetFilter}
         />
         {noResults && (
           <div className={inputStyle.noResults}>
             По вашему запросу ничего не найдено.
           </div>
         )}
-
         <div className={inputStyle.example}>
           Пример: Batman, Avengers, Home Alone
         </div>
