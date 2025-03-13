@@ -74,7 +74,9 @@ export const InputField: React.FC = () => {
     const value = event.target.value ? parseInt(event.target.value, 10) : null;
     setFilterTerm(value);
   };
-
+  const handleResetFilter = (): void => {
+    setFilterTerm(null);
+  };
   return (
     <div className={inputStyle.inputField}>
       <div className={inputStyle.content}>
@@ -107,7 +109,10 @@ export const InputField: React.FC = () => {
           </ul>
         )}
 
-        <Filter handleInputFilterChange={handleInputFilterChange} />
+        <Filter 
+          handleInputFilterChange={handleInputFilterChange}
+          handleResetFilter={handleResetFilter}
+        />
         {noResults && (
           <div className={inputStyle.noResults}>
             По вашему запросу ничего не найдено.
