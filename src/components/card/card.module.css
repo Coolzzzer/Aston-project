@@ -1,97 +1,98 @@
 .card {
   position: relative;
-  margin: 93px;
-  width: 378px;
-  height: 745px;
-  background-color: rgba(242, 242, 242, 1);
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
-  text-align: start;
+  width: 320px;
+  height: 520px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
-.cardImg{
-	width: 378px;
-	height: 517px;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
 }
-.cardTitle{
-	font-family:var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 24px;
-	line-height: 36px;
-	letter-spacing: 0%;
-	color: var(--color);
-	margin-top: 20px;
-	margin-left: 30px;
+
+.cardImg {
+  width: 100%;
+  height: 70%;
+  object-fit: contain;
+  background-color: #f0f0f0;
 }
-.yearCreation{
-	font-family:var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 18px;
-	line-height: 27px;
-	letter-spacing: 0%;
-	color: var(--color);
-	margin-top: 20px;
-	margin-left: 30px;
+
+.cardTitle {
+  font-family: var(--font-family);
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  margin: 10px 20px 5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.details{
-	font-family:var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: 14px;
-	line-height: 21px;
-	letter-spacing: 0%;
-	text-align: center;
-	color:var(--color);
-	width: 111px;
-	height: 58px;
-	top: 1689px;
-	left: 117px;
-	border-radius: 10px;
-	background-color: rgba(173, 255, 47, 1);
-	margin-top: 20px;
-	margin-left: 30px;
+
+.yearCreation {
+  font-family: var(--font-family);
+  font-size: 16px;
+  color: #4d2323;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.details {
+  width: 120px;
+  height: 40px;
+  background-color: #7ecb20;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: auto;
+  margin-bottom: 15px;
+}
+
+.details:hover {
+  background-color: #6aae1a;
 }
 
 .likeButton {
   position: absolute;
-  bottom: 40px;
-  right: 0;
+  bottom: 70px;
+  right: 15px;
   width: 40px;
   height: 40px;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 72px;
-  transition: transform 0.2s ease-in-out;
+  font-size: 36px;
+  transition:
+    transform 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
-/* дефолт */
 .likeButton::before {
   content: "♡";
-  color: rgb(210, 203, 203);
-  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  color: rgb(180, 180, 180);
 }
 
-/* ховер */
 .likeButton:hover::before {
-  color: rgba(187, 66, 66, 0.649);
+  color: #d24d4d;
 }
 
-.likeButton:focus {
-  outline: none;
+.likeButton.pressed::before {
+  content: "♥";
+  color: #d24d4d;
 }
 
-/* активный клик */
 .likeButton:active {
   transform: scale(0.9);
 }
-
-/* лайкнули */
-.likeButton.pressed::before {
-  content: "♡";
-  color: rgba(187, 66, 66, 0.649);
-}
-
-
-
-

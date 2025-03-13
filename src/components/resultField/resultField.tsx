@@ -7,6 +7,7 @@ import { selectMovies } from "@store/moviesSlice";
 export const ResultField: React.FC = () => {
   const movies = useSelector(selectMovies);
   const { currentMovies, currentPage, nextPage, prevPage } = usePagination();
+
   return (
     <div className={resultFieldStyles.resultContainer}>
       <div className={resultFieldStyles.resultField}>
