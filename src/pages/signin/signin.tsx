@@ -25,11 +25,9 @@ export function Signin() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const result = userSchema
-      .pick({ email: true, password: true })
-      .safeParse(formData);
-
+  
+    const result = userSchema.pick({ email: true, password: true }).safeParse(formData);
+  
     if (!result.success) {
       const newErrors: Record<string, string> = {};
       result.error.errors.forEach((err) => {
@@ -38,12 +36,14 @@ export function Signin() {
       setErrors(newErrors);
       return;
     }
-
+  
     try {
       dispatch(loginUser(formData as User));
       navigate(URLs.HOME_PAGE);
-    } catch {
-      setErrors({ general: "Неверный email или пароль" });
+    } catch (error) {
+      if (error instanceof Error) {
+        setErrors({ general: error.message });
+      }
     }
   };
 
@@ -55,7 +55,7 @@ export function Signin() {
           className={signinStyles.box}
         >
           <Typography variant="h4" gutterBottom>
-            Авторизация
+            Вход
           </Typography>
           <form onSubmit={handleSubmit} className={signinStyles.form}>
             <TextField

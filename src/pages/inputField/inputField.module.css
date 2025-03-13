@@ -1,0 +1,77 @@
+.inputField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: rgba(173, 255, 47, 1);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-size: 80px;
+  line-height: 120px;
+  text-align: center;
+  margin-bottom: -20px;
+}
+
+.slogan {
+  color: rgba(255, 255, 255, 1);
+  font-family: var(--font-family);
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchInput {
+  width: 600px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 24px;
+  outline: none;
+}
+
+.searchButton {
+  background-color: rgba(173, 255, 47, 1);
+  width: 150px;
+  height: 80px;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-left: -20px;
+}
+
+.searchButton:hover {
+  background-color: rgba(153, 235, 27, 1);
+}
+
+.searchButton:active {
+  background-color: rgba(133, 215, 17, 1);
+  transform: scale(0.98);
+}
+
+.example {
+  margin-top: 20px;
+  color: rgba(189, 189, 189, 1);
+  font-family: var(--font-family);
+  font-size: 18px;
+  text-align: center;
+}
+
+.noResults {
+  margin-top: 15px;
+  color: rgba(255, 100, 100, 1);
+  font-family: var(--font-family);
+  font-size: 20px;
+  text-align: center;
+}
