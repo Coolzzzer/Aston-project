@@ -95,11 +95,11 @@ export const InputField: React.FC = () => {
           </button>
         </div>
 
-        {suggestions.length > 0 && (
+        {suggestions.length && (
           <ul className={inputStyle.suggestionsList}>
-            {suggestions.map((movie, index) => (
+            {suggestions.map((movie) => (
               <li
-                key={index}
+                key={movie.imdbID}
                 className={inputStyle.suggestionItem}
                 onClick={() => handleSuggestionClick(movie.Title)}
               >
