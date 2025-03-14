@@ -8,3 +8,10 @@
 .grid2 {
   justify-content: center;
 }
+
+.favoritesCards {
+    max-height: 80vh;
+    overflow: auto;
+    border-radius: 20px;
+    background-color: var(--header-footer-bg-color);
+}

@@ -20,14 +20,7 @@ export function Favorites() {
         Избранное
       </Typography>
       <Container className={favoritesStyle.favoritesContainer} maxWidth="xl">
-        <Card
-          style={{
-            maxHeight: "60vh",
-            overflow: "auto",
-            borderRadius: "60px",
-            backgroundColor: "var(--header-footer-bg-color)",
-          }}
-        >
+        <Card className={favoritesStyle.favoritesCards}>
           <CardContent>
             <Grid2 className={favoritesStyle.grid2} container spacing={2}>
               {favorites.length > 0 ? (
@@ -48,4 +41,3 @@ export function Favorites() {
     </Stack>
   );
 };
-
