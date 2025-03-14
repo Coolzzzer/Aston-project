@@ -3,6 +3,7 @@ import authReducer from "./authSlice";
 import favoritesReducer from "./favoritesSlice";
 import historyReducer from "./historySlice";
 import moviesReducer from "./moviesSlice";
+import loggerMiddleware from "./loggerMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,8 @@ export const store = configureStore({
     history: historyReducer,
     movies: moviesReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(loggerMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

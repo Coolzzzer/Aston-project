@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type User = {
   name: string;
   email: string;
@@ -10,8 +12,8 @@ export type AuthState = {
 };
 
 export type MoviesState = {
-  movies: Movie[],
-}
+  movies: Movie[];
+};
 
 type StringObject = {
   [key: string]: string;
@@ -26,6 +28,11 @@ export type CardDataForPopup = {
   Actors: string;
   Country: string;
   Ratings: StringObject[];
+};
+
+export type MovieDetail = {
+  label: string;
+  value?: string | string[];
 };
 
 export type Movie = {
@@ -48,4 +55,12 @@ export type SearchHistoryEntry = {
 
 export type HistoryState = {
   history: SearchHistoryEntry[];
+};
+
+export type ErrorBoundaryProps = {
+  children: ReactNode;
+};
+
+export type ErrorBoundaryState = {
+  hasError: boolean;
 };

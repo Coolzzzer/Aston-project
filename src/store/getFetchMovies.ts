@@ -1,4 +1,4 @@
-import { URLs } from "@utils/constants/constants";
+import { BASE_URL } from "@utils/constants/constants";
 import { Movie } from "@utils/types/types";
 
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
@@ -10,7 +10,7 @@ export const fetchMovies = async (
 ): Promise<void> => {
   try {
     const filterParam = filter ? `&y=${filter}` : ""; 
-    const url = `${URLs.GET_CARD_DATA}${API_KEY}&s=${encodeURIComponent(query)}${filterParam}`;
+    const url = `${BASE_URL}${API_KEY}&s=${encodeURIComponent(query)}${filterParam}`;
 
     const response = await fetch(url);
 
@@ -21,7 +21,7 @@ export const fetchMovies = async (
     const data = await response.json();
 
     if (data.Search && Array.isArray(data.Search)) {
-      setMovies(data.Search.slice(0, 5));
+      setMovies(data.Search);
     } else {
       setMovies([]);
     }

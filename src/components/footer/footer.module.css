@@ -1,10 +1,11 @@
 .footer {
     box-sizing: border-box;
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: inherit;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 36px;
     color: rgba(173, 255, 47, 1);
     display: var(--header-footer-display);
