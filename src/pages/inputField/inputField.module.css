@@ -80,14 +80,31 @@
   margin: 0;
   padding: 0;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
   max-height: 150px;
-  overflow-y: scroll; /* Контролируем вертикальный скроллинг */
-  scrollbar-width: none; /* Скрыть полоску в Firefox */
-  -ms-overflow-style: none; /* Скрыть полоску в IE и Edge */
+  width: 15%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   background-color: #fff;
   position: absolute;
   z-index: 10;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.2s ease-out;
+  z-index: 10;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.suggestionsList.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* Для браузеров на базе WebKit (Chrome, Safari) */
@@ -95,10 +112,14 @@
   display: none; /* Скрыть скроллбар */
 }
 
-
 .suggestionItem {
   padding: 10px;
   cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .suggestionItem:hover {

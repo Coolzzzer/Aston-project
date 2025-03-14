@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { URLs } from "@utils/constants/constants";
+import { URLs, BASE_URL } from "@utils/constants/constants";
 import { CardDataForPopup } from "@utils/types/types";
 import popupStyle from "./popupCard.module.css";
 import { ESC_KEY } from "@utils/constants/constants";
@@ -22,7 +22,7 @@ export function PopupCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${URLs.GET_CARD_DATA}${id}`);
+        const response = await fetch(`${BASE_URL}${id}`);
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
