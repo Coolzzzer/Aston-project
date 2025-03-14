@@ -75,3 +75,32 @@
   font-size: 20px;
   text-align: center;
 }
+.suggestionsList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: scroll; /* Контролируем вертикальный скроллинг */
+  scrollbar-width: none; /* Скрыть полоску в Firefox */
+  -ms-overflow-style: none; /* Скрыть полоску в IE и Edge */
+  background-color: #fff;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Для браузеров на базе WebKit (Chrome, Safari) */
+.suggestionsList::-webkit-scrollbar {
+  display: none; /* Скрыть скроллбар */
+}
+
+
+.suggestionItem {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background-color: rgba(173, 255, 47, 0.3);
+}

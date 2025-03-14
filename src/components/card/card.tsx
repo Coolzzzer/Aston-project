@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import cardStyles from "./card.module.css";
 import { Movie } from "@utils/types/types";
 import { selectFavorites } from "@store/favoritesSlice";
+import { getLoggedIn } from "@store/getLoggedIn";
 
 type CardProps = {
   currentMovies: Movie[];
@@ -14,6 +15,7 @@ export const Card: React.FC<CardProps> = ({ currentMovies }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const favorites = useSelector(selectFavorites);
+  const loggedIn = useSelector(getLoggedIn);
 
   const handleOpenModal = (imdbID: string) => {
     const movie = currentMovies.find((movie) => movie.imdbID === imdbID);
@@ -46,11 +48,11 @@ export const Card: React.FC<CardProps> = ({ currentMovies }) => {
             >
               Подробнее
             </button>
-            <button
+            {loggedIn && <button
               className={`${cardStyles.likeButton} ${isLiked ? cardStyles.pressed : ""}`}
               title="like"
               onClick={() => handleLike(movie)}
-            ></button>
+            ></button>}
           </div>
         );
       })}

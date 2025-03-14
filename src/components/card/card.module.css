@@ -80,6 +80,14 @@
     color 0.2s ease-in-out;
 }
 
+.likeButton:hover {
+  border-color: none;
+}
+.likeButton:focus,
+.likeButton:focus-visible {
+  outline: none;
+}
+
 .likeButton::before {
   content: "♡";
   color: rgb(180, 180, 180);

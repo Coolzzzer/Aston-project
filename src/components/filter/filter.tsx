@@ -1,33 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import filterStyle from "./filter.module.css";
 
 type InputFilterProps = {
   handleInputFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleResetFilter: () => void; 
 };
 
-export const Filter: React.FC<InputFilterProps> = ({ handleInputFilterChange }) => {
+export const Filter: React.FC<InputFilterProps> = ({
+  handleInputFilterChange,
+  handleResetFilter,
+}) => {
   const [showInput, setShowInput] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
-    setShowInput((prevState) => !prevState);
-    setIsActive((prevState) => !prevState);
+    if (isActive) {
+
+      handleResetFilter();
+      setShowInput(false); 
+    } else {
+      setShowInput(true); 
+    }
+    setIsActive(!isActive);
   };
 
   return (
-    <div className={filterStyle.filterFild}>
-      <button 
-        onClick={handleClick} 
-        className={isActive ? `${filterStyle.filterButton} ${filterStyle.active}` : filterStyle.filterButton}
+    <div className={filterStyle.filterField}>
+      <button
+        onClick={handleClick}
+        className={
+          isActive
+            ? `${filterStyle.filterButton} ${filterStyle.active}`
+            : filterStyle.filterButton
+        }
       >
-        Фильтр
+        {isActive ? "Сброс" : "Фильтр"} 
       </button>
       {showInput && (
         <input
           className={filterStyle.filterInput}
           placeholder="Введите год"
-          type="number" 
-          onChange={handleInputFilterChange} 
+          type="number"
+          onChange={handleInputFilterChange}
         />
       )}
     </div>
