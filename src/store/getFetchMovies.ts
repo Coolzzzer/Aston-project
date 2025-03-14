@@ -5,7 +5,7 @@ const apiKey = `3e3e7f8f`;
 
 export const fetchMovies = async (
   query: string,
-  filter: number,
+  filter: number | null,
   setMovies: (data: Movie[]) => void
 ): Promise<void> => {
   try {
