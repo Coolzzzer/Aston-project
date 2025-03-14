@@ -1,22 +1,32 @@
 import { URLs } from "@utils/constants/constants";
 import { Movie } from "@utils/types/types";
 
-const apiKey = `3e3e7f8f`;
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 export const fetchMovies = async (
   query: string,
-  filter: number,
+  filter: number | null, 
   setMovies: (data: Movie[]) => void
 ): Promise<void> => {
   try {
-    const response = await fetch(`${URLs.GET_CARD_DATA}${apiKey}&s=${query}&y=${filter}`);
+    const filterParam = filter ? `&y=${filter}` : ""; 
+    const url = `${URLs.GET_CARD_DATA}${API_KEY}&s=${encodeURIComponent(query)}${filterParam}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+
     const data = await response.json();
-    if (data.Search) {
-      setMovies(data.Search);
+
+    if (data.Search && Array.isArray(data.Search)) {
+      setMovies(data.Search.slice(0, 5));
     } else {
       setMovies([]);
     }
   } catch (error) {
     console.error("Ошибка при загрузке данных:", error);
+    setMovies([]); 
   }
 };
