@@ -32,7 +32,7 @@ export type CardDataForPopup = {
 
 export type MovieDetail = {
   label: string;
-  value: string | string[] | undefined;
+  value?: string | string[];
 };
 
 export type Movie = {
