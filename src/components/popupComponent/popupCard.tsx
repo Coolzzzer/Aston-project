@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { URLs } from "@utils/constants/constants";
 import { CardDataForPopup } from "@utils/types/types";
 import popupStyle from "./popupCard.module.css";
+import { ESC_KEY } from "@utils/constants/constants";
+import { generateMovieDetails } from "@utils/functions/functions";
 
 export function PopupCard() {
   const [data, setData] = useState<CardDataForPopup | null>(null);
@@ -30,10 +32,9 @@ export function PopupCard() {
     fetchData();
   }, [id]);
 
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === ESC_KEY) {
         handleCloseModal();
       }
     };
@@ -45,22 +46,28 @@ export function PopupCard() {
     return null;
   }
 
+  const movieDetails = generateMovieDetails(data);
+
   return (
     <div className={popupStyle.overlay} onClick={handleCloseModal}>
-      <div className={popupStyle.popupContainer} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={popupStyle.popupContainer}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={popupStyle.popupHeader}>
           <h2>Детали фильма</h2>
         </div>
         <div className={popupStyle.popupContent}>
           <img src={data.Poster} alt="movie" className={popupStyle.popupImg} />
           <div className={popupStyle.popupInformation}>
-            <p><b>{data.Title}</b></p>
-            <p><b>Year:</b> {data.Year}</p>
-            <p><b>Genres:</b> {data.Genre}</p>
-            <p><b>Director:</b> {data.Director}</p>
-            <p><b>Casts:</b> {data.Actors}</p>
-            <p><b>Country:</b> {data.Country}</p>
-            <p><b>IMD Rating:</b> {data.Ratings[0].Value}</p>
+            {movieDetails.map((detail) => (
+              <p key={detail.label}>
+                <b>{detail.label}:</b>{" "}
+                {Array.isArray(detail.value)
+                  ? detail.value.join(", ")
+                  : detail.value}
+              </p>
+            ))}
           </div>
         </div>
         <div className={popupStyle.popupFooter}>

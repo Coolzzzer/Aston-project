@@ -7,6 +7,7 @@ import { Movie } from "@utils/types/types";
 import inputStyle from "./inputField.module.css";
 import { useLocation } from "react-router-dom";
 import { Filter } from "@components/filter/filter";
+import { ENT_KEY } from "@utils/constants/constants";
 
 export const InputField: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -47,11 +48,13 @@ export const InputField: React.FC = () => {
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === ENT_KEY) {
       handleSearch();
     }
   };
-  const handleInputFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputFilterChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const value = event.target.value ? parseInt(event.target.value, 10) : null;
     setFilterTerm(value);
   };
@@ -72,11 +75,8 @@ export const InputField: React.FC = () => {
           <button className={inputStyle.searchButton} onClick={handleSearch}>
             Поиск
           </button>
-
         </div>
-        <Filter
-            handleInputFilterChange={handleInputFilterChange}
-        />
+        <Filter handleInputFilterChange={handleInputFilterChange} />
         {noResults && (
           <div className={inputStyle.noResults}>
             По вашему запросу ничего не найдено.

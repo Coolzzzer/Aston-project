@@ -14,7 +14,7 @@ export const URLs = {
   SIGN_IN: `/signin`,
   HISTORY: `/history`,
   FAVORITES: `/favorites`,
-  GET_CARD_DATA:  API_URL,
+  GET_CARD_DATA: API_URL,
 } as const;
 
 //keys
@@ -22,9 +22,13 @@ export const STORAGE_KEYS = {
   USER: "user",
   LOGGEDIN: "loggedIn",
   FAVORITES: "favorites",
-  HISTORY: "history"
+  HISTORY: "history",
 };
 
 export const TIMEZONE = {
-  RU: "ru-RU"
-}
+  RU: "ru-RU",
+};
+
+export const ESC_KEY = "Escape";
+
+export const ENT_KEY = "Enter";

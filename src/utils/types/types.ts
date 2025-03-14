@@ -30,6 +30,11 @@ export type CardDataForPopup = {
   Ratings: StringObject[];
 };
 
+export type MovieDetail = {
+  label: string;
+  value: string | string[] | undefined;
+};
+
 export type Movie = {
   imdbID: string;
   Poster: string;
